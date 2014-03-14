@@ -1,0 +1,81 @@
+/**
+ *
+ * TODO: check classes still apply in D7 - in particular the unpublished classes and the extra classes.
+ */
+/* Comment wrapper */
+#comments {
+	border-top: 1px solid #ddd;
+	padding: 0;
+	margin: 1em 0 0;
+}
+
+#comments > h2 {
+	border-bottom: 1px solid #ddd;
+	margin: 0 0 1em;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	line-height: 1.2;
+	color: #333;
+}
+
+.comment.has-user-picture { position: relative; padding-left: 50px; }
+
+.comment .user-picture { left: 0; position: absolute; top: 5px; }
+
+/* Individual comment */
+.comment { margin-bottom: 2em; }
+
+/* Indentation */
+#comments .indented { margin-bottom: 1em; margin-left: 0; padding-left: 30px; }
+
+/* Comment Title */
+.comment-title { margin: 0; padding: 0; display: inline-block; }
+
+.comment-title a {
+	text-decoration: none;
+	color: #333;
+	font-size: 150%;
+	font-weight: bold;
+}
+
+.comment-title a:hover,
+.comment-title a:active,
+.comment-title a:focus { text-decoration: underline; color: #2985E8; }
+
+.comment-header em {
+	font-size: 10px;
+	color: #c00;
+	vertical-align: top;
+	padding-left: 3px;
+	font-weight: bold;
+}
+
+/* Skinr comment title alignment. */
+.ta-l .comment-title { text-align: left; }
+
+.ta-r .comment-title { text-align: right; }
+
+.ta-c .comment-title { text-align: center; }
+
+/* Comment "new" title */
+.comment-title .new { color: #f80; }
+
+/* User Picture */
+.comment .user-picture img { height: 35px; margin: 0 10px 0 0; width: 35px; }
+
+/* Comment Content */
+.comment-content {
+	border: 1px solid #DDD;
+	padding: 10px 10px 0 10px;
+	position: relative;
+}
+
+.comment.has-user-picture .comment-content { margin-left: -50px; }
+
+/* Submitted */
+.comment > .footer { color: #999; margin: 0 0 1em; font-size: .95em; }
+
+/* Links */
+.comment .comment-links { margin-top: 15px; text-align: right; }
+
+.comment ul.links { display: block; margin: 0; padding: 0; }

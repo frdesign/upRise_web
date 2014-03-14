@@ -1,0 +1,7 @@
+; $Id: standard.info,v 1.2 2010/10/25 15:48:41 webchick Exp $
+name = ThemeBrain
+description = Install profile for ThemeBrain themes
+version = VERSION
+core = 7.x
+
+files[] = themebrain_profile.profile

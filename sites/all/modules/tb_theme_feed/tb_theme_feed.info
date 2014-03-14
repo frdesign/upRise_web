@@ -1,0 +1,21 @@
+name = TB Theme Feed
+description = "Get theme feed and create nodes"
+package = Feeds
+core = 7.x
+project = "tb_theme_feed"
+configure = admin/config/feed/tb_theme_feed
+
+files[] = tb_theme_feed.inc
+files[] = includes/themebrain.inc
+files[] = includes/fusion.inc
+files[] = includes/themeforest.inc
+files[] = includes/drupal.inc
+files[] = tb_theme_feed_views.inc
+
+scripts[] = 'js/tb_theme_feed.js'
+
+dependencies[] = image
+dependencies[] = taxonomy
+dependencies[] = link
+
+stylesheets[all][] = css/tb_theme_feed.css

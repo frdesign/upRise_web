@@ -1,0 +1,49 @@
+/**
+ * IE Compatibility Tweaks
+ */
+
+/* blocks.css */
+.block-user .item-list li {
+  display: inline;
+  zoom: 1;
+}
+
+#user-login-form .item-list li {
+  display: block;
+}
+
+/* forms.css */
+input.form-submit {
+  overflow: visible; /* IE Fix */
+}
+
+input.form-submit,
+a.button {
+  padding: 3px 10px;
+}
+
+#comment-form .filter-wrapper {
+  padding-top: 1em;
+}
+
+/* fields.css */
+.field-type-taxonomy-term-reference ul li {
+	margin-top: 2px;
+}
+
+body.tb-wall-popup-iframe {
+	overflow: hidden;
+}
+
+.badge_song .block-title:before,
+.badge_gallery .block-title:before {
+	margin-top: 1px;
+}
+
+.badge_video .block-title:before {
+	margin-top: 3px;
+}
+
+.sharethis-buttons {
+	bottom: -30px;
+}

@@ -1,0 +1,375 @@
+/**
+ * Common Block
+ */
+/* --- Blocks --- */
+.block { margin: 0; }
+
+.block-inner { padding: 0; }
+
+.front .block-inner,
+.page-showcase .block-inner,
+.page-taxonomy-term .block-inner{ padding-left: 0; padding-right: 0; }
+
+/* --- Block Lists --- */
+.block ul li { margin: 0 0 0 .5em; }
+
+/* Block More Links */
+.block .more-link { margin-top: 5px; }
+
+/* --- Sidebar Blocks --- */
+.sidebar .block { color: #666; position: relative;}
+
+.sidebar .block-inner {
+	background: #FFF;
+	border: 1px solid #E5E5E5;
+	margin: 10px;
+	padding: 15px 20px;
+}
+
+.sidebar .block-title {
+	border-bottom: 1px solid #E5E5E5;
+	color: #222;
+	font-size: .92em;
+	margin: 0 0 15px;
+	padding: 0 0 15px;
+	text-transform: uppercase;
+}
+
+.sidebar .block-inner img.node-image{ max-width: 100%; height: auto; width: 100%; }
+
+/* Menu Left Blocks */
+#menu-left-wrapper .block-inner {
+	text-align: right;
+	border-top: 1px solid #DDD;
+	margin: 20px 0 0;
+	padding: 13px 0;
+}
+
+#menu-left-wrapper .block-title {
+	color: #212121;
+	font-size: .92em;
+	margin: 0 0 5px;
+	padding: 0;
+	text-transform: uppercase;
+}
+
+#menu-left-wrapper .block ul.menu { text-align: right; font-size: .95em; }
+
+#menu-left-wrapper .block .form-text, #menu-left-wrapper .block textarea { text-align: right; }
+
+#menu-left-wrapper .block li.expanded ul {
+	border-bottom: solid 1px #ddd;
+	padding-bottom: 35px;
+	margin-bottom: 20px;
+}
+
+/**
+ * Specfic Blocks
+ */
+/* --- Menu Block --- */
+.block-menu ul.menu { margin-bottom: 0; margin-left: 0; }
+
+.block-menu ul.menu ul { margin-left: 1em; }
+
+/* --- Node Blocks --- */
+.block-node table { overflow: hidden; width: 100%; }
+
+.block-node tbody { border-top: 0; }
+
+.block-node table tr td { border-bottom: 1px dotted #ccc; }
+
+.block-node table .title-author { padding-left: 0; padding-right: 0; }
+
+.block-node table .node-title { font-size: 1em; }
+
+.block-node table .node-title a { color: #666; }
+
+.block-node table .node-title a:hover,
+.block-node table .node-title a:active,
+.block-node table .node-title a:focus { color: #fff; }
+
+.block-node table .node-author { color: #999; font-size: 1em; }
+
+body.not-logged-in .block-node table td.edit,
+body.not-logged-in .block-node table td.delete {
+	display: none; /* Hide Edit & Delete TD if not log-in */
+}
+
+/* Search blocks in header */
+#header .block-search .block-inner,
+#header .block-search .form-item,
+#header #search-block-form { margin: 0; padding: 0; }
+
+#header #search-block-form {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 500;
+}
+
+#header #search-block-form .form-submit,
+#search-block-form label { display: none; }
+
+#header #search-block-form .form-text {
+	height: 40px;
+	text-indent: -9999px;
+	border: none;
+	width: 40px;
+	z-index: 9999;
+	padding: 0;
+	margin: 0;
+	background: url("../images/ico-search.png") no-repeat 15px center #151515;
+	vertical-align: middle; 
+	display: inline-block;
+	border-left: solid 1px #252525;
+}
+
+#header #search-block-form .form-text:focus,
+#header #search-block-form .form-text:hover {
+	width: 180px;
+	color: #fff;
+	text-indent: 0;
+	padding-left: 30px;
+}
+
+.badge {
+	display: none;
+}
+
+span.bigicon {
+	background-image: url("../images/block_social.png");
+	background-repeat: no-repeat;
+	float: left;
+	height: 27px;
+	left: 0;
+	margin: 5px 10px 0 0;
+	top: 0;
+	width: 27px;
+	display: none;
+}
+
+/* --- Badge --- */
+.badge_new .block-title:after {
+	width: 27px;
+	height: 13px;
+	background: url("../images/badge.png") no-repeat left top;
+	display: inline-block;
+	content: "";
+	margin-top: 0px;
+	margin-left: 10px;
+	vertical-align: top;
+	margin-top: -1px;
+}
+
+.badge_top .block-title:after {
+	width: 27px;
+	height: 13px;
+	background: url("../images/badge.png") no-repeat left bottom;
+	display: inline-block;
+	content: "";
+	margin-top: 0px;
+	margin-left: 10px;
+	vertical-align: top;
+	margin-top: -1px;
+}
+.badge_hot .block-title:after {
+	width: 27px;
+	height: 13px;
+	background: url("../images/badge.png") no-repeat left -13px;
+	display: inline-block;
+	content: "";
+	margin-top: 0px;
+	margin-left: 10px;
+	vertical-align: top;
+	margin-top: -1px;
+}
+
+.badge_song .block-title:before {
+	width: 17px;
+	height: 13px;
+	background: url("../images/icon-song.png") no-repeat left top;
+	display: inline-block;
+	content: "";
+	margin-top: 0px;
+	margin-right: 10px;
+	vertical-align: top;
+	margin-top: -1px;
+}
+
+.badge_gallery .block-title:before {
+	width: 15px;
+	height: 12px;
+	background: url("../images/icon-photo.png") no-repeat left top;
+	display: inline-block;
+	content: "";
+	margin-top: 0px;
+	margin-right: 10px;
+	vertical-align: top;
+	margin-top: 0px;
+}
+
+.badge_video .block-title:before {
+	width: 15px;
+	height: 8px;
+	background: url("../images/icon-video.png") no-repeat left top;
+	display: inline-block;
+	content: "";
+	margin-top: 0px;
+	margin-right: 10px;
+	vertical-align: top;
+	margin-top: 2px;
+}
+/* --- Color Light --- */
+.color_light span.bigicon {
+	background-position: left -135px;
+	display: block;
+}
+
+.color_green span.bigicon {
+	background-position: left -0px;
+	display: block;
+}
+
+.color_orange span.bigicon {
+	background-position: left -27px;
+	display: block;
+}
+
+.color_dark span.bigicon {
+	background-position: left -108px;
+	display: block;
+}
+
+.color_yellow span.bigicon {
+	background-position: left bottom;
+	display: block;
+}
+
+.color_red span.bigicon {
+	background-position: left -81px;
+	display: block;
+}
+
+.symbol_quote span.bigicon {
+	background-position: left -162px;
+	display: block;
+}
+
+.symbol_twitter span.bigicon {
+	background-position: left -54px;
+	display: block;
+}
+.sidebar .color_green.symbol_twitter span.bigicon { display: none; }
+/* --- User Blocks --- */
+.block-user .form-item label,
+#user-login .form-item label { font-size: .95em; }
+
+.block-user .form-item-name input { width: 90%; }
+
+.block-user .form-item-pass input { width: 90%; }
+
+.block-user .item-list li { display: inline-block; }
+
+.block-user p { margin: 0; }
+
+.galleryformatter-greenarrows .gallery-thumbs { padding: 0 !important; }
+
+/* Block Badge ---*/
+
+
+
+/* Block No Padding ---*/ 
+.block_no-padding .block-inner { padding: 0; }
+
+span.date,
+span.author {
+	text-align: right;
+	color: #2d2d2d;
+	display: block;
+	font-family: Arial,Helvetica,sans-serif;
+	text-transform: none;
+}
+/* Change Skin Switch */
+#skin-menu-wrapper {
+  background: none repeat scroll 0 0 #FFFFFF;
+  padding: 5px 0;
+  position: fixed;
+  width: 100%;
+  z-index: 20;
+}
+#change_skin_menu_wrapper ul { 
+  list-style: none;
+  margin: 0;
+  padding: 0;	
+  float: right;
+}
+
+#change_skin_menu_wrapper ul li {
+  display: inline;
+  padding: 0 5px;
+  line-height: 1.em;
+}
+
+#change_skin_menu_wrapper ul li a {
+  display: inline-block;
+  height: 10px;
+  text-indent: -999em;
+  font-size: 0px;
+  text-decoration: none;
+  width: 10px;
+  opacity: 0.5;
+  vertical-align: middle;
+}
+
+#change_skin_menu_wrapper ul li.active a {
+  height: 10px;
+  width: 10px;
+  opacity: 1;
+}
+
+#change_skin_menu_wrapper a.color-default {
+  background: #2985E8; 
+}
+
+#change_skin_menu_wrapper a.color-chrismast{
+  background: #ff4f4f; 
+}
+
+
+/* Block Symbol ---*/
+.symbol_tag .bigicon { background-position: 0 0; display: block; }
+
+.symbol_link .bigicon { background-position: 0 -30px; display: block; }
+
+.symbol_quote .bigicon { background-position: 0 -60px; display: block; }
+
+.symbol_heart .bigicon{ background-position: 0 -90px; display: block; }
+
+.symbol_twitter  .bigicon { background-position: 0 -120px; display: block; }
+
+.symbol_quesition .bigicon { background-position: 0 -150px; display: block; }
+
+.symbol_mobile .bigicon{ background-position: 0 -180px; display: block; }
+
+/* Popular Tags */
+.item-list .popular_tags li { background: none; float: left; padding: 0 3px; margin: 0 0 4px 0; }
+.item-list .popular_tags li a { display: block; }
+.video iframe { max-width: 100% !important; overflow: hidden; }
+
+/*login poprup*/
+div.modal-forms-modal-content .modal-header {
+	position: relative;
+}
+div.modal-forms-modal-content .modal-title {
+	margin: 22px 0 0 15px;
+	display: block;
+	font-size: 1.4em;
+}
+div.modal-forms-modal-content .popups-close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	text-indent: -999em;
+}

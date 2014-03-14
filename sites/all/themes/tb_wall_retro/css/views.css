@@ -1,0 +1,201 @@
+/**
+ * Common View Elements
+ */
+/* --- Views Inline Grid --- */
+
+.view-gallery .grid.views-col{
+	width: 50%;
+	overflow: hidden;
+}
+
+.view-gallery .views-field-field-image img {
+	background-color: #FFF;
+	border: 1px solid #E5E5E5;
+	margin-bottom: 0.833em;
+	padding: 4px;
+	display: block;
+	max-width: 100%;
+	height: auto;
+	width: 83%;
+}
+
+.view-gallery .views-field-field-image:hover img {
+	border-color: #2985e8;
+	background-color: #2985e8;
+}
+
+#sidebar-first-wrapper .view-gallery  .grid-inner {
+	padding-left: 0px;
+}
+
+/* Gallery Formatter ---*/
+.galleryformatter {
+	margin-bottom: 15px;
+}
+
+.galleryformatter .gallery-slides, .galleryformatter .gallery-thumbs {
+	margin: 0px !important;
+}
+
+/* --- Views Twitter --- */
+.twtr-widget {
+	font-family: Arial,Helvetica,sans-serif !important; 
+}
+
+.twtr-hd { display: none !important; }
+
+.twtr-widget .twtr-tweet {
+	border-bottom: 1px solid #E5E5E5 !important;
+	margin-bottom: 15px;
+}
+
+.twtr-widget .twtr-tweet-wrap { padding: 0px !important; }
+
+.twtr-widget em {
+	margin: 15px 0px !important;
+	font-size: .95em !important;
+}
+
+.twtr-widget em, .twtr-widget .twtr-new-results { font-size: .95em !important; }
+
+a.twtr-join-conv { color: #2985E8 !important; }
+
+a.twtr-join-conv:hover,
+a.twtr-join-conv:focus,
+a.twtr-join-conv:hover { color: #12639b !important; }
+
+#twtr-widget-1 .twtr-tweet-text em a { color: #999 !important; }
+
+.twtr-ft span {
+	float: left !important; 
+	text-align: left !important; 
+	margin-left: 5px !important;
+}
+
+.twtr-widget .twtr-ft a {
+	background: url(../images/icon-twitter-mini.png) no-repeat left top !important;
+	width: 16px;
+	height: 16px;
+	display: block;
+}
+
+.twtr-widget .twtr-ft a img {
+	background: none !important;
+	display: none;
+}
+
+.twtr-widget .twtr-ft a.twtr-join-conv{
+	background: none !important;
+	width: auto;
+	height: auto;
+}
+
+/* Gallery ---*/
+.galleryformatter-greenarrows .gallery-thumbs .wrapper {
+	border-bottom: none !important;
+	background: none !important;
+}
+
+.galleryformatter-greenarrows .gallery-thumbs .wrapper { 
+	margin: 0px 18px;
+}
+
+.galleryformatter-greenarrows .gallery-thumbs li a,
+.galleryformatter-greenarrows .gallery-thumbs li a:hover,
+.galleryformatter-greenarrows .gallery-thumbs li a:focus,
+.galleryformatter-greenarrows .gallery-thumbs li a:active {
+	background: none !important;
+}
+
+.galleryformatter-greenarrows .gallery-thumbs li.active a {
+	background: none !important; 
+}
+
+.galleryformatter-greenarrows .gallery-thumbs .arrow {
+	width: 15px !important; 
+	height: 90px !important;
+	background-image: url("../images/navi_showcase.png");
+	background-repeat: no-repeat; 
+	top: 22px !important;
+}
+
+.galleryformatter-greenarrows .gallery-thumbs .arrow.back {
+	background-position: left top !important;
+} 
+
+.galleryformatter-greenarrows .gallery-thumbs .arrow.back:hover,
+.galleryformatter-greenarrows .gallery-thumbs .arrow.back:focus,
+.galleryformatter-greenarrows .gallery-thumbs .arrow.back:active {
+	background-position: left bottom !important;
+}
+
+.galleryformatter-greenarrows .gallery-thumbs .arrow.forward {
+	background-position: right top !important;
+} 
+
+.galleryformatter-greenarrows .gallery-thumbs .arrow.forward:hover,
+.galleryformatter-greenarrows .gallery-thumbs .arrow.forward:focus,
+.galleryformatter-greenarrows .gallery-thumbs .arrow.forward:active {
+	background-position: right bottom !important;
+}
+
+.galleryformatter-greenarrows .view-full{
+	width: 26px !important; 
+	height: 26px  ; 
+	background-image: url("../images/room-icon.gif") !important;
+	background-repeat: no-repeat !important;
+	background-position: left top !important;
+}
+
+.galleryformatter-greenarrows .view-full:hover,
+.galleryformatter-greenarrows .view-full:focus,
+.galleryformatter-greenarrows .view-full:active,
+.galleryformatter-greenarrows a:hover .view-full,
+.galleryformatter-greenarrows a:focus .view-full,
+.galleryformatter-greenarrows a:active .view-full{
+	background-position: right bottom !important;
+	cursor: pointer;
+}
+
+.gallery-thumbs img.lazyloader-icon {
+	display: none !important;
+}
+
+.galleryformatter .slide-button {
+	background-image: url("../images/nav_page.gif") !important;
+	width: 17px !important; 
+	height: 48px !important; 
+	background-repeat: no-repeat !important;
+	text-decoration: none; 
+	font-size: 0px;
+	line-height: 48px;
+	text-indent: -999em;
+}
+
+.galleryformatter .slide-button {
+	top: 45% !important;
+}
+
+.galleryformatter-greenarrows .next-slide {
+    background-position: right top;
+    margin-right: 10px !important;
+}
+
+.galleryformatter .next-slide:hover {
+	background-position: right bottom !important;
+	text-decoration: none !important;
+}
+
+.galleryformatter-greenarrows .prev-slide {
+    background-position: left top;
+    margin-left: 10px !important;
+}
+
+.galleryformatter .prev-slide:hover {
+	background-position: left bottom !important;
+	text-decoration: none !important;
+}
+
+.view-archive .image-view-item {
+	margin-bottom: 15px;
+}

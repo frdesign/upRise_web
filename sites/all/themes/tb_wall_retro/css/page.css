@@ -1,0 +1,395 @@
+.wrapper .container { margin-left: 0; }
+
+/* Grid Gutter */
+.grid-inner { padding: 0 20px; }
+
+.sidebar .grid-inner,
+.main-content-inner.grid-inner,
+.page-showcase .main-content-inner.grid-inner{ padding: 0; }
+
+/**
+ * Main Containner
+*/
+#header-wrapper { position: fixed; top: auto; }
+
+#header-wrapper.header-skin-wrapper { position: fixed; top: 29px; }
+
+#header-wrapper .grid-inner { padding-right: 10px; }
+
+#main-wrapper { top: 40px; position: relative; }
+
+#main-wrapper.main-skin-wrapper { top: 70px; }
+
+#main-wrapper .container { padding: 10px 0; }
+
+#main-wrapper #system-messages-wrapper .container { padding: 15px 0 0; }
+
+/**
+ * Header
+*/
+#header-wrapper { background: #000; width: 100%; z-index: 100; }
+
+#header { clear: both; position: relative; }
+
+/* Logo & Site name */
+#logo {
+	left: 0;
+	position: absolute;
+	z-index: 99;
+	top: 11px;
+	width: 89px;
+}
+
+#logo img { margin: 0 0 0 10px; width: 89px; }
+
+#name-and-slogan { float: left; line-height: 1.2; }
+
+.site-name { font-size: 5em; margin: 0; }
+
+.site-name a { color: #c00; text-decoration: none; }
+
+.site-name a:hover,
+.site-name a:focus,
+.site-name a:active { color: #c00; text-decoration: none; }
+
+.site-slogan {
+	background: #ddd;
+	color: #666;
+	font-size: 1.286em;
+	font-weight: bold;
+	margin: .188em 0 0;
+	padding: 5px;
+	text-align: center;
+}
+
+/* Region */
+.region-header {
+	position: absolute;
+	right: 1px;
+	width: 200px !important;
+}
+
+/**
+ * Main Navigation
+*/
+#menu-bar-wrapper {
+	margin: 0 0 0 120px;
+	padding: 0;
+	position: relative;
+	z-index: 499; /* Drupal toolbar index is 600 */
+	float: left;
+}
+
+#menu-bar-wrapper .menu-bar { position: relative; }
+
+#menu-bar-wrapper .region-menu-bar { width: 100%; }
+
+/**
+ * Main Content
+*/
+.left-menu-existed .page-main-inner { padding: 0 0 0 150px; }
+
+.front .left-menu-existed .page-main-inner,
+.page-showcase .left-menu-existed .page-main-inner,
+.page-taxonomy-term .left-menu-existed .page-main-inner,
+.left-menu-existed  #system-messages-wrapper .grid-inner{ padding-top: 0; padding-left: 150px; }
+
+.left-menu-existed  #mass-top-wrapper .grid-inner { padding: 0px; }
+.left-menu-existed  #system-messages-wrapper .grid-inner {
+	padding-right: 10px ;
+}
+
+.content_page.grid-inner {
+	padding: 0px;
+}
+#system-messages-wrapper .grid-inner div.messages {
+	margin-left: 10px !important;
+}
+/* Page Title */
+#page-title {
+	font-size: 2em;
+	margin: 0;
+	color: #222;
+	margin: 10px 0 15px;
+	line-height: 1.3;
+	display: none;
+}
+
+.in-maintenance #page-title { padding: 10px; }
+
+/**
+ * Sidebars
+*/
+#menu-left-wrapper {
+	width: 135px;
+	left: 0;
+	position: fixed;
+	z-index: 200;
+	margin-top: 0;
+	text-align: right;
+}
+
+.region-menu-left { width: 100px; margin-left: 20px; }
+
+/**
+ * Other Pages
+*/
+/* Blog Action Links */
+.page-blog ul.action-links { margin: 15px 0 20px 10px; padding: 0; }
+
+.page-blog ul.action-links li { margin: 0; }
+
+.page-blog ul.action-links li a {
+	margin: 0;
+	padding: 6px 20px;
+	border: 1px solid #11639d;
+	font-weight: bold;
+	color: #fff;
+	background: #2984e7;
+	cursor: pointer;
+}
+
+.page-blog ul.action-links a:hover,
+.page-blog ul.action-links a:focus,
+.page-blog ul.action-links a:active {
+	text-decoration: none;
+	color: #fff;
+	background: #2a85e8;
+}
+
+/* --- Profiles --- */
+.profile { margin-top: 0; }
+
+.profile h3 {
+	border-bottom: 1px solid #ddd;
+	margin: 0 0 1em;
+	padding: 0 0 .5em 0;
+}
+
+.profile .user-picture { float: none; }
+
+/* --- Search Results --- */
+.search-results { margin: 0; }
+
+.search-results .title { font-size: 1.154em; }
+
+.search-results .search-snippet-info { padding: 0; }
+
+.search-results p { margin: 0; }
+
+.search-results .search-info { font-size: .923em; }
+
+/* Responsive menu  */
+#header .responsive-menu-button{
+	border-color: #252525;
+	border-style: solid;
+	display: none;
+	height: 40px;
+	position: absolute;
+	text-indent: -9999px;
+	top: 0;
+	width: 40px;
+}
+
+#header .tb-main-menu-button{
+	background: url('../images/icon-navigation.gif') center center no-repeat;
+	right: 0px;
+	border-left: solid 1px #252525;
+	border-right: solid 1px #252525;
+}
+
+#header .tb-left-menu-button{
+	background: url('../images/icon-sidebar.png') center center no-repeat;
+	left: 0;
+	border-width: 0 1px 0 0;
+}
+
+#button-btt { display: none; }
+
+#Top { position: absolute; top: 0; }
+
+#menu-left-inner { height: 100%; }
+
+body.tb-wall-popup-iframe #block-system-main { background: #fff; height: 625px; overflow: hidden; }
+
+body.tb-wall-popup-iframe #block-system-main .block-inner { height: 100%; overflow: hidden; }
+
+/* 404 Page ---*/
+.body-404 {
+	color: #555;
+	font-weight: normal;
+	line-height: 1.6;
+	font-size: 12px;
+	font-family: Arial,Helvetica,sans-serif;
+	
+}
+
+.content-404 {
+	background: url('../images/404.png') no-repeat center top;
+	position: relative;
+	width: 650px;
+	height: 546px;
+	margin: 0px auto 0 auto;
+	font-size: 0px;
+	text-indent: -999em;
+}
+
+.content-404 h1,
+.content-404 description-404,
+.content-404 span{
+	display: none;
+}
+
+.content-404 a,
+.content-404 a:hover,
+.content-404 a:focus,
+.content-404 a:active { 
+	font-size: 0px;  
+	display: block;
+	position: absolute;
+	background-repeat: no-repeat;
+	text-indent: -999em;
+	text-decoration: none;
+	background-position: left top;
+}
+
+.content-404 a.home-404:hover,
+.content-404 a.home-404:focus,
+.content-404 a.home-404:active {
+	background-position: left -59px;
+}
+
+.content-404 a.home-404 {
+	width: 105px;
+	height: 59px;
+	bottom: 146px;
+	right: 10px;
+	background-image: url('../images/button-home.png');
+}
+
+.content-404 a.home-404:hover,
+.content-404 a.home-404:focus,
+.content-404 a.home-404:active {
+	background-position: left bottom;
+}
+
+
+.content-404 a.showcase-404 {
+	width: 121px;
+	height: 67px;
+	bottom: 102px;
+	right: 125px;
+	background-image: url('../images/button-showcase.png');
+}
+
+.content-404 a.showcase-404:hover,
+.content-404 a.showcase-404:focus,
+.content-404 a.showcase-404:active {
+	background-position: left -67px;
+}
+
+.content-404 a.blog-404 {
+	width: 103px;
+	height: 56px;
+	bottom: 45px;
+	right: 20px;
+	background-image: url('../images/button-blog.png');
+}
+
+
+.content-404 a.blog-404:hover,
+.content-404 a.blog-404:focus,
+.content-404 a.blog-404:active {
+	background-position: left -56px;
+}
+
+.region-mass-top .block-title {
+	border-bottom: 1px solid #E5E5E5;
+	color: #222;
+	font-size: 0.92em;
+	margin: 0px 0 15px;
+	padding: 0px 0 15px;
+	text-transform: uppercase;
+}
+
+.region-mass-top iframe{
+	max-width: 100%; 
+	margin-bottom: 10px;
+}
+
+#sidebar-second-wrapper .grid-inner {
+	padding: 0px;
+}
+
+#sidebar-second-wrapper h3 {
+	font-size: 1em;
+}
+
+#sidebar-second-wrapper p {
+	margin: 5px 0 15px;
+}
+
+.page-contact .page-inner-wrapper {
+	background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #E5E5E5;
+    margin: 10px 10px 20px;
+    padding: 15px 20px;
+    position: relative;
+}
+
+.page-contact .page-inner-wrapper .grid-inner  {
+	padding: 0px;
+}
+
+.christmas-skin .content-404 {
+  background: url("../images/christmas-404.png") no-repeat center center;
+  font-size: 0;
+  height: 474px;
+  margin: 0 auto;
+  position: relative;
+  text-indent: -999em;
+  width: 650px;
+}
+.christmas-skin .content-404 a, 
+.christmas-skin .content-404 a:hover, 
+.christmas-skin .content-404 a:focus, 
+.christmas-skin .content-404 a:active {
+  display: block;
+  font-size: 0;
+  position: absolute;
+  text-decoration: none;
+  text-indent: 0;
+  color: #c2c1bd;
+}
+.christmas-skin .content-404 a.home-404 {
+  background: url("../images/bg-404-home.png") no-repeat 0 0;	
+  bottom: 213px;
+  height: 34px;
+  right: 76px;
+  width: 76px;
+}
+.christmas-skin .content-404 a.home-404:hover {
+	background: url("../images/bg-404-home.png") no-repeat 0 -34px;
+}
+
+.christmas-skin .content-404 a.showcase-404{
+  background: url("../images/bg-404-showcase.png") no-repeat 0 0;
+  bottom: 173px;
+  height: 37px;
+  right: 79px;
+  width: 76px;
+}
+.christmas-skin .content-404 a.showcase-404:hover {
+	background: url("../images/bg-404-showcase.png") no-repeat 0 -37px;
+}
+
+.christmas-skin .content-404 a.blog-404{
+  background: url("../images/bg-404-blog.png") no-repeat 0 0;
+  bottom: 139px;
+  height: 32px;
+  right: 80px;
+  width: 76px;
+}
+.christmas-skin .content-404 a.blog-404:hover {
+	background: url("../images/bg-404-blog.png") no-repeat 0 -32px;
+}

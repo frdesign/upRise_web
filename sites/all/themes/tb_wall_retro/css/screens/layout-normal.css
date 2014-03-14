@@ -1,0 +1,28 @@
+/* MAIN CONTAINER
+--------------------------------------------------------- */
+/* Content ---*/
+.group-24 #main-content.grid-14 {
+	width: 75% !important;
+}
+
+.group-24 #sidebar-first-wrapper.grid-10 {
+	width: 25% !important;
+}
+
+.gallery-thumbs,
+.gallery-slides {
+	max-width: 100% !important;
+}
+
+li.gallery-slide {
+	max-width: 400px; 
+	position: relative;
+}
+
+.sharethis-buttons {
+	margin: 10px 0px;
+	display: inline-block;
+	position: inherit;
+	right: auto;
+	bottom: 0px !important;
+}

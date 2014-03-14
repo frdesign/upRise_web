@@ -1,0 +1,120 @@
+/**
+ * IE 8 Compatibility Tweaks
+ */
+#cboxLoadedContent img {
+  max-width: none;
+}
+
+.node-links ul.links li {
+	display: inline-block;
+}
+
+.field-type-taxonomy-term-reference ul li {
+	margin-top: 1px;
+}
+
+.tb-wall-popup-iframe .field-type-image img{
+	width: auto !important;
+	max-width: auto !important;
+}
+
+.mCSB_container {
+	margin-right: 10px !important;
+}
+
+.mCustomScrollBox .mCSB_scrollTools {
+	width: 4px !important;
+	margin-top: 20px !important;
+}
+
+.mCSB_scrollTools .mCSB_draggerContainer{
+	display: none;
+}
+
+#menu-left-wrapper #menu-left-inner:hover .mCSB_scrollTools .mCSB_draggerContainer {
+	opacity: 1 !important;
+	filter: alpha(opacity = 100)!important;
+	display: block;
+}
+
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+	background: #666 !important;
+}
+
+.mCSB_scrollTools .mCSB_draggerRail {
+	background: none !important;
+}
+
+
+body.tb-wall-popup-iframe .grid-inner {
+	margin: 0px !important;
+	padding: 0px !important;
+}
+
+body.tb-wall-popup-iframe .node {
+	width: 550px !important;
+	overflow: hidden !important;
+}
+
+body.tb-wall-popup-iframe #block-system-main {
+  overflow: visible !important;
+}
+
+body.tb-wall-popup-iframe,
+body.toolbar-drawer.tb-wall-popup-iframe {
+	overflow: scroll !important;
+	overflow-x: hidden !important;
+}
+
+body.tb-wall-popup-iframe #block-system-main .block-inner {
+  overflow: visible !important;
+}
+
+.field-type-image img {
+	width: 100%;
+}
+
+.node-links ul.links li {
+	background-position: left center; 
+}
+
+.page-blog ul.action-links li a {
+	background: #2984e7;
+}
+
+.page-blog ul.action-links a:hover,
+.page-blog ul.action-links a:focus,
+.page-blog ul.action-links a:active {
+	background: #2a85e8;
+}
+
+#header #search-block-form .form-text {
+	line-height: 40px;
+}
+
+.christmas-skin #header #search-block-form .form-text{
+	line-height: 30px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.badge_video .block-title:before {
+	margin-top: 2px;
+}
+
+body.tb-wall-popup-iframe #block-system-main .block-content  {
+	overflow: visible;
+}
+
+
+.color-light-skin .node-links ul.links {
+	float: right;
+	margin-top: 0;
+}
+.color-light-skin .node-links ul.links li.node-readmore{
+	float: right;
+}
+.color-light-skin .node-links ul.links li.comment-comments{
+	float: left;
+	margin: 12px 0;
+}

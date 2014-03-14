@@ -1,0 +1,94 @@
+#forum { width: 100%; }
+
+.page-forum #page-title { margin-bottom: 10px; }
+
+.page-forum #main-content .block-content { background: #FFF; margin: 10px 10px 20px; padding: 0px; }
+
+#forum .name { font-weight: bold; }
+
+#forum .description { color: #666; font-size: .92em; }
+
+/* Forums Table */
+#forum table { width: 100%; }
+
+#forum tr.even td,
+#forum tr.odd td { border-bottom: 1px dotted #ccc; }
+
+#forum tr.odd { background: #f7f7f7; }
+
+#forum thead tr { background: #333; }
+
+#forum td.topics,
+#forum td.posts,
+#forum td.replies,
+#forum td.created,
+#forum td.last-reply { font-size: .857em; }
+
+/* Forums Head */
+#forum tr td.container {
+	background: #ddd;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	padding: .75em 5px .75em 25px;
+}
+
+#forum tr td.container .name { font-size: 1.15em; }
+
+/* Forums List */
+#forum td.forum { width: 60%; }
+
+#forum td.forum .name {
+	background-image: url(../images/forum-default.png);
+	background-position: left center; /* LTR */
+	background-repeat: no-repeat;
+	padding-left: 30px; /* LTR */
+}
+
+#forum tr.new-topics td.forum .name { background-image: url(../images/forum-default.png); }
+
+/* Topic List */
+#forum td.title .submitted { font-size: .92em; }
+
+/* Forums Indent */
+#forum div.indent { margin-left: 20px; }
+
+/* Forums Icons */
+#forum .icon div {
+	background-image: url(../images/forum-icons.png);
+	background-repeat: no-repeat;
+	height: 24px;
+	width: 24px;
+}
+
+#forum .icon .topic-status-new { background-position: -24px 0; }
+
+#forum .icon .topic-status-hot { background-position: -48px 0; }
+
+#forum .icon .topic-status-hot-new { background-position: -72px 0; }
+
+#forum .icon .topic-status-sticky { background-position: -96px 0; }
+
+#forum .icon .topic-status-closed { background-position: -120px 0; }
+
+/* Forums Action Links */
+.page-forum ul.action-links { margin: 15px 0 20px 10px; padding: 0; }
+
+.page-forum ul.action-links li { margin: 0; }
+
+.page-forum ul.action-links li a {
+	margin: 0;
+	padding: 6px 20px;
+	border: 1px solid #11639d;
+	font-weight: bold;
+	color: #fff;
+	background: #2984e7;
+	cursor: pointer;
+}
+
+.page-forum ul.action-links a:hover,
+.page-forum ul.action-links a:active,
+.page-forum ul.action-links a:focus {
+	text-decoration: none;
+	color: #fff;
+	background: #2a85e8;
+}

@@ -1,0 +1,103 @@
+/* 
+    Document   : tablet
+    Created on : 25-08-2012, 14:52:40
+    Author     : Probook
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.form-text, textarea {
+	-webkit-border-radius: 0px;
+	 -webkit-appearance: none !important;
+}
+
+input.form-checkbox {
+	background: none;
+	border: none;
+	padding: 0px;
+}
+
+/**
+  * Responsive Layout
+  */
+  
+#main-wrapper .container,
+#main-wrapper .container #main-content,
+.wrapper .container,
+#sidebar-first-wrapper,
+#mass-top-wrapper,
+.page-inner  {
+	width: 100% !important;
+}
+
+#main-wrapper .group-cols-1 {
+	width: 100% !important;
+}
+
+#sidebar-second-wrapper {
+	width: 40% !important;
+}
+
+.page-contact #main-wrapper .container #main-content {
+	width: 60% !important;
+}
+.left-menu-existed .page-main-inner {
+	padding-left: 150px;
+}
+
+ul.pager li.pager-current {
+	margin: 0px -3px 0px -2px;
+}
+
+
+/* Header ---*/
+#header #search-block-form {
+	right: -10px;
+}
+
+#header {
+	height: 40px !important;
+}
+
+#header-wrapper {
+	width: 100% !important;
+}
+
+#sidebar-first-wrapper .grid-inner{
+	margin-left: 0px;
+	margin-right: 0px;
+} 
+
+.sf-menu.sf-style-wall ul {
+	width: 12em !important;
+}
+.node-title {
+	font-size: 1.7em;
+}
+
+.body-404 #main-wrapper{
+	top: 20px;
+	
+}
+/* Color Node---*/
+#cboxLoadedContent{
+	overflow-x: hidden !important;
+	overflow-y: scroll !important;
+}
+
+
+.galleryformatter .gallery-slides a.slide-button {
+    opacity: 1 !important;
+}
+
+/* Retro */
+.retro-skin .left-menu-existed .page-main-inner {
+  border-right: 1px solid #DEDEDE;
+  border-bottom: none;
+  margin-right: 10px;
+}
+
+.retro-skin #sidebar-first-wrapper .grid-inner {
+  border-left: 1px solid #DEDEDE;
+  margin-left: 131px;
+}

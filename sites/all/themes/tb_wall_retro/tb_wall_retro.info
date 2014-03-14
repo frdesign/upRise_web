@@ -1,0 +1,191 @@
+; Theme info
+name = 'Tb Wall Retro'
+description = TB Wall Retro is a light weight Drupal theme that is based on <a href="http://themebrain.com/about-nucleus">Nucleus</a>. Requires <a href="http://drupal.org/project/nucleus">Nucleus</a> base theme.
+core = '7.x'
+engine = 'phptemplate'
+base theme = 'nucleus'
+screenshot = 'screenshot.png'
+
+; Stylesheets
+stylesheets[all][] = 'css/html-elements.css'
+stylesheets[all][] = 'css/forms.css'
+stylesheets[all][] = 'css/page.css'
+stylesheets[all][] = 'css/articles.css'
+stylesheets[all][] = 'css/comments.css'
+stylesheets[all][] = 'css/forum.css'
+stylesheets[all][] = 'css/fields.css'
+stylesheets[all][] = 'css/blocks.css'
+stylesheets[all][] = 'css/navigation.css'
+stylesheets[all][] = 'css/fonts.css'
+stylesheets[all][] = 'css/typo.css'
+stylesheets[all][] = 'css/layout.css'
+stylesheets[all][] = 'css/scrollbar.css'
+
+; Seperate CSS3 to css3.css
+stylesheets[all][] = 'css/css3.css'
+
+; Stylesheets for Print Media
+stylesheets[print][] = 'css/print.css'
+
+; Conditional Stylesheets for IE
+stylesheets-conditional[lt IE 9][all][] = 'css/jquery.mCustomScrollbar.css'
+stylesheets-conditional[IE][all][] = css/ie.css
+stylesheets-conditional[IE 7][all][] = css/ie7.css
+stylesheets-conditional[lt IE 9][all][] = css/ie8.css
+
+; Responsive
+stylesheets[only screen and (min-width:1891px)][] = 'css/screens/layout-hd.css'
+stylesheets[only screen and (min-width:1586px) and (max-width: 1890px)][] = 'css/screens/layout-wide-extra.css'
+stylesheets[only screen and (min-width:1236px) and (max-width: 1585px)][] = 'css/screens/layout-wide.css'
+stylesheets[only screen and (min-width:1050px) and (max-width: 1235px)][] = 'css/screens/layout-normal.css'
+
+stylesheets[only screen and (min-width: 720px) and (max-width: 1049px)][] = 'css/screens/tablet.css'
+stylesheets[only screen and (min-width: 720px) and (max-width: 959px)][] = 'css/screens/tablet-vertical.css'
+stylesheets[only screen and (max-width:719px)][] = 'css/screens/mobile.css'
+stylesheets[only screen and (max-width:479px)][] = 'css/screens/mobile-vertical.css'
+
+; Scripts in this theme
+scripts[] = 'js/jquery.matchHeights.min.js'
+scripts[] = 'js/jquery.masonry.min.js'
+scripts[] = 'js/modernizr-transitions.js'
+scripts[] = 'js/jquery.mousewheel.min.js'
+scripts[] = 'js/jquery-ui-1.8.21.custom.min.js'
+scripts[] = 'js/jquery.mCustomScrollbar.js'
+scripts[] = 'js/iscroll.js'
+scripts[] = 'js/jquery.smooth-scroll.js'
+scripts[] = 'js/tb_wall_retro.js'
+
+; Core regions
+regions[content] = 'Main content'
+regions[header] = 'Header'
+regions[menu_bar] = 'Menu bar'
+regions[menu_left] = 'Menu left'
+regions[highlighted] = 'Highlighted'
+regions[footer] = 'Footer'
+regions[help] = 'Help'
+regions[page_top] = 'Page top'
+regions[page_bottom] = 'Page bottom'
+regions[mass_top] = 'Mass top'
+
+; Sidebar regions
+regions[sidebar_first] = 'Sidebar first'
+regions[sidebar_second] = 'Sidebar second'
+
+; Features (core settings)
+features[] = 'logo'
+features[] = 'name'
+features[] = 'slogan'
+features[] = 'node_user_picture'
+features[] = 'comment_user_picture'
+features[] = 'comment_user_verification'
+features[] = 'favicon'
+features[] = 'go_to_top_button'
+features[] = 'secondary_menu'
+
+; Breadcrumb
+settings[breadcrumb_display] = 'yes'
+settings[breadcrumb_separator] = ' &#187; '
+settings[breadcrumb_home] = 1
+
+; Layouts
+pages[default] = 'Normal page'
+
+; Default settings
+settings[grid] = 24
+settings[layout_width_selector] = 'custom'
+settings[layout_width_custom] = '100%'
+settings[page_layout] = 'default'
+
+; Sidebar width settings
+settings[sidebar_first_width] = 10
+
+; Fonts
+settings[base_font] = 'bf-a'
+settings[site_name_font] = ''
+settings[site_slogan_font] = ''
+settings[page_title_font] = ''
+settings[node_title_font] = ''
+settings[comment_title_font] = ''
+settings[block_title_font] = ''
+settings[font_size] = 'fs-medium'
+
+; Default fonts family
+default_fonts[sss] = 'Calibri, Candara, Helvetica Neue, Trebuchet MS, Arial, Helvetica, sans-serif'
+default_fonts[ssl] = 'Verdana, Geneva, Arial, Helvetica, sans-serif'
+default_fonts[a] = 'Arial, Helvetica, sans-serif'
+default_fonts[ss] = 'Garamond, Perpetua, Times New Roman, serif'
+default_fonts[sl] = 'Georgia, Baskerville, Palatino, Palatino Linotype, Book Antiqua, Times New Roman, serif'
+default_fonts[m] = 'Segoe UI, Myriad Pro, Myriad, Arial, Helvetica, sans-serif;'
+default_fonts[l] = 'Lucida Sans Unicode, Lucida Sans, Lucida Grande, Verdana, Geneva, sans-serif'
+default_fonts[ms] = 'Consolas, Monaco, Courier New, Courier, monospace'
+
+block_styles[wall] = 'Wall'
+
+block_extend_classes[color_dark] = 'Block Dark'
+block_extend_classes[color_green] = 'Block Green'
+block_extend_classes[color_red] = 'Block Red'
+block_extend_classes[color_light] = 'Block Light'
+block_extend_classes[color_yellow] = 'Block Yellow'
+block_extend_classes[color_orange] = 'Block Orange'
+block_extended_class_groups[group_color][group_title] = 'Color'
+block_extended_class_groups[group_color][supported_styles] = 'wall'  
+block_extended_class_groups[group_color][group_title] = 'Color block'
+block_extended_class_groups[group_color][classes] = 'color_dark, color_green, color_red, color_light, color_yellow, color_orange,'
+
+block_extend_classes[block_no-padding] = 'No Padding'
+block_extended_class_groups[group_style][group_title] = 'Style'
+block_extended_class_groups[group_style][supported_styles] = 'wall'  
+block_extended_class_groups[group_style][group_title] = 'Style block'
+block_extended_class_groups[group_style][classes] = 'block_no-padding'
+
+block_extend_classes[badge_hot] = 'Badge Hot'
+block_extend_classes[badge_top] = 'Badge Top'
+block_extend_classes[badge_new] = 'Badge New'
+block_extend_classes[badge_video] = 'Badge Video'
+block_extend_classes[badge_gallery] = 'Badge Gallery'
+block_extend_classes[badge_song] = 'Badge Song'
+block_extended_class_groups[group_badge][group_title] = 'Badge'
+block_extended_class_groups[group_badge][supported_styles] = 'wall'  
+block_extended_class_groups[group_badge][group_title] = 'Badge block'
+block_extended_class_groups[group_badge][classes] = 'badge_new, badge_hot, badge_top, badge_gallery, badge_song, badge_video'
+
+block_extend_classes[symbol_quote] = 'Symbol Quote'
+block_extend_classes[symbol_twitter] = 'Symbol Twitter'
+block_extended_class_groups[group_symbol][group_title] = 'Symbol'
+block_extended_class_groups[group_symbol][supported_styles] = 'wall'  
+block_extended_class_groups[group_symbol][group_title] = 'Symbol block'
+block_extended_class_groups[group_symbol][classes] = 'symbol_quote, symbol_twitter'
+
+block_extend_classes[grid-single] = 'Single Grid'
+block_extend_classes[grid-double] = 'Double Grid'
+block_extend_classes[grid-triple] = 'Triple Grid'
+block_extended_class_groups[group_grid][group_title] = 'Grid'
+block_extended_class_groups[group_grid][supported_styles] = 'wall'  
+block_extended_class_groups[group_grid][group_title] = 'Grid block'
+block_extended_class_groups[group_grid][classes] = 'grid-single, grid-double, grid-triple'
+
+; Superfish Styles
+superfish_styles[wall] = 'Wall Style for Superfish'
+settings[superfish_extend_style_1] = 'wall'
+
+settings[region_sidebar_first_style] = 'wall'
+settings[region_sidebar_first_extend_class] = 'group_grid grid-single'
+
+settings[toggle_logo] = 1
+settings[toggle_name] = 0
+settings[toggle_slogan] = 0
+settings[toggle_node_user_picture] = 1
+settings[toggle_comment_user_picture] = 1
+settings[toggle_comment_user_verification] = 1
+settings[toggle_favicon] = 1
+settings[toggle_secondary_menu] = 0
+settings[default_logo] = 1
+settings[default_favicon] = 1
+
+settings[default_logo] = 1
+settings[logo_path] = ''
+settings[default_favicon] = 1
+settings[favicon_path] = ''
+
+; Supported Skins
+skins[classic] = 'Classic skin'

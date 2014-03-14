@@ -1,0 +1,25 @@
+.tb-theme-feed-add-account-wrapper fieldset {
+  display: none;
+}
+
+#tb-theme-feed-admin-settings .fieldset-wrapper .form-type-textfield label {
+	display: inline-block;
+	width: 150px;
+	float: left;
+}
+
+#tb-theme-feed-admin-settings .fieldset-wrapper .form-type-textfield input.form-text {
+	width: 70%; 
+	max-width: 70%;
+	display: inline-block;
+}
+
+#tb-theme-feed-admin-settings .fieldset-wrapper div.description {
+	display: block;
+}
+
+#tb-theme-feed-admin-settings a.btn  {
+	padding-left: 20px;
+	background-repeat: no-repeat;
+	background-position: left center;
+}

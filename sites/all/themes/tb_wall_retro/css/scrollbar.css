@@ -1,0 +1,32 @@
+/* CSS for iScroll */
+#menu-left-wrapper {
+	background: #fff;
+	overflow: hidden;
+}
+#menu-left-inner {
+	background: #fff;
+}
+
+/**
+ *
+ * Vertical Scrollbar
+ *
+ */
+.myScrollbarV {
+	position: absolute;
+	z-index: 100;
+	width: 5px;
+	bottom: 7px;
+	top: 20px;
+	right: 1px;
+}
+
+.myScrollbarV > div {
+	position:absolute;
+	z-index:100;
+	width:100%;
+	background: #666;
+}
+.tb-wall-popup-iframe .myScrollbarV {
+	bottom: 25px !important;
+}

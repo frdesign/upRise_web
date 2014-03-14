@@ -1,0 +1,17 @@
+.main-content-inner {
+  max-width: 1920px;
+}
+
+/* MASONRY PRESETS
+--------------------------------------------------------- */
+/* Default (Medium) ----*/
+.grid.views-col {
+  width: 14.2%; /* 7 cols */
+}
+
+.grid.tb-wall-large-style {
+  width: 28.4%;
+}
+
+/* MAIN CONTAINER
+--------------------------------------------------------- */
