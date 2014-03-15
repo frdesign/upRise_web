@@ -1,0 +1,7 @@
+name = Uprise Aura Points
+description = Calculate user ranking based on overall users and their points
+core = 7.x
+scripts[] = aura_points.js
+scripts[] = aura_canvas.js
+package = upRise
+dependencies[] = userpoints

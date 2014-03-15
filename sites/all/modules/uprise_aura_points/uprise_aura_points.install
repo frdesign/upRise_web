@@ -1,0 +1,30 @@
+<?php
+
+/**
+* Implements hook_schema().
+*/
+function uprise_aura_points_schema() {
+  $schema['userpoints_uprise_top_average'] = array(
+     'description' => 'Table to store daily top average userpoints.',
+    'fields' => array(
+      'top_average_userpoints' => array(
+        'description' => 'The high average score.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        ),
+      'date' => array(
+        'description' => 'The Unix timestamp when the score was stored.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        )
+      ),
+  );
+  return $schema;
+}
+
+function uprise_aura_points_uninstall() {
+  db_query('DROP TABLE {userpoints_uprise_top_average}');
+}
+

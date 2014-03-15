@@ -1,0 +1,147 @@
+<?php
+
+/**
+* Calculate average high points of top users
+* when once every hour when cron runs --hook_cron()
+*/
+
+function uprise_aura_points_cron() {
+  // Default to an hourly interval. Of course, cron has to be running at least
+  // hourly for this to work.
+  $interval = variable_get('cron_example_interval', 60 * 60);
+  // We usually don't want to act every time cron runs (which could be every
+  // minute) so keep a time for the next run in a variable.
+  if (time() >= variable_get('cron_example_next_execution', 0)) {
+    
+    // DB query for average score of top 10% of users (top 1000 if user base gets to 10k)
+    // count records total (users with points)
+    $points_count = db_query('SELECT uid FROM userpoints_total');
+    // Count the number of rows, divide by 10 and round up to neareast full number
+    // Decrease percentage captured as membership number increases
+    $top_percent = ceil($points_count->rowCount() / 2);
+    // average score of top 10% (to decrease with time)
+    $top_points = db_query_range('SELECT u.points from {userpoints_total} u
+                            ORDER BY u.points DESC', 0, $top_percent);
+    
+    $points = 0;
+    foreach ($top_points as $record) {
+      // Perform operations on $record->title, etc. here.
+      $count = $record->points;
+      $points = ($points + $count);
+    }
+    //Average scores among top users
+    $top_average_score = ($points / $top_percent);
+    // Save top average score for today to use when
+    // calculating each user's ranking    
+    $query = db_insert('userpoints_uprise_top_average') // Table name no longer needs {}
+    ->fields(array(
+      'date' => time(),
+      'top_average_userpoints' => $top_average_score
+    ));
+    $query->execute();
+    
+    variable_set('cron_example_next_execution', time() + $interval);
+  }
+}
+
+/**
+* Calculate a user's aura level
+*
+* $high_aura_percent is the current percent out of 100 possible aura levels members can reach
+* so that new early adopters don't get to level 100 right away (should be increased as site grows).
+*/
+function uprise_aura_points_user_aura_level ($uid) {
+    
+    // Set percentage of user ranking to be used as aura (1=100%)
+    $high_aura_percent = .3;
+    
+    // Get today's high average score
+    $top_points = db_query_range('SELECT u.top_average_userpoints from {userpoints_uprise_top_average} u
+                            ORDER BY u.date DESC', 0, 1);
+    foreach ($top_points as $record) {
+      // Perform operations on $record->title, etc. here.
+      $top_average_score = $record->top_average_userpoints;
+    }
+    
+    // get users total points
+    $user_total_points = userpoints_get_current_points($uid);
+    
+    // Divide user points by top average score and to get current ranking
+    // round down to 2 decimal places (.9999 becomes .99)
+    // i.e. 1000/1000 = 1 (100%) - 500/1000 = .5 (50%)
+    $user_ranking = round($user_total_points / $top_average_score, 2, PHP_ROUND_HALF_DOWN);
+    
+    // Multiply by 100 to get true aura molecules count
+    $aura_level = $user_ranking * $high_aura_percent * 100;
+    
+    dpm($top_average_score, 'top average score');
+    dpm($user_total_points, 'user points');
+    dpm($user_ranking, 'user ranking');
+    dpm($high_aura_percent, 'high aura percent');
+    dpm($aura_level, 'aura level');
+    
+    // Fix aura level if user value too high or too low
+    if ($aura_level <1) {
+        $aura_level = 1;
+    } elseif($aura_level > ($high_aura_percent * 100) ) {
+        $aura_level = $high_aura_percent * 100;
+    }
+    return floor($aura_level);
+    
+}
+
+/**
+* Add points to new members for certain user actions
+*/
+
+function uprise_aura_points_user_login(&$edit, $account) {
+  // Add 5 points when new account is crated
+  $params = array (
+      'uid' => $account->uid,
+      'points' => 5,
+    );
+    userpoints_userpointsapi($params);
+}
+
+
+/**
+* Implements hook_block_info().
+*/
+function uprise_aura_points_block_info() {
+  $blocks = array();
+
+  $blocks['UPRISE_AURA_POINTS_ABC'] = array(
+    'info' => t('Uprise Aura Points'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  return $blocks;
+}
+
+/**
+* Implements hook_block_view().
+*/
+function uprise_aura_points_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'UPRISE_AURA_POINTS_ABC':
+      $block['subject'] = '';
+      $block['content'] = _UPRISE_AURA_POINTS_BLOCK_ABC_CONTENT();
+      break;
+  }
+
+  return $block;
+}
+
+function _UPRISE_AURA_POINTS_BLOCK_ABC_CONTENT() {
+    // Calculate user's aura level
+    $uid = arg(1);
+    $user_aura_level = uprise_aura_points_user_aura_level($uid);
+    
+  $output = '
+    <div id="aura-container"><canvas id="aura"><p class="noCanvas">You need a <a href="http://www.google.com/chrome">modern browser</a> to view this.</p></canvas></div>
+    <div id="aura-level">Level: <span id="aura-level-value">' . $user_aura_level . '</span></div>
+  ';
+  return $output;
+}
