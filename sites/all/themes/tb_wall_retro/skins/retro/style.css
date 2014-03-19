@@ -1018,9 +1018,9 @@ ul.pager li.pager-current {
 }
 
 
-/*Custom Overrides ----------------------------------------*/
+/*CUSTOM OVERRIDES ----------------------------------------*/
 
-
+/*HEADER ***************/
 
 /*Get rid of rainbowy images on original theme*/
 div#header-wrapper .container {
@@ -1052,4 +1052,29 @@ div#menu-bar-wrapper {
 #header form#search-block-form:hover {
     background: white;
     border: 1px solid #0C888E;
+}
+
+
+/*BODY ***************/
+body {
+	background-image: none;
+}
+
+/*PANELS USER PROFILE OVERRIDES ------------------------------------*/
+
+#public_profile .user-picture img{
+	width: 100px;
+	height: auto;
+	border-radius: 55px; 
+	-moz-border-radius: 55px;
+	-webkit-border-radius: 55px;
+	position: absolute;
+	margin: 85px 0 0 85px;
+	border: 5px solid white;
+}
+
+canvas#aura {
+	border-radius: 140px; 
+	-moz-border-radius: 140px;
+	-webkit-border-radius: 140px;
 }

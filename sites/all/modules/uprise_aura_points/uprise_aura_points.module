@@ -1,5 +1,9 @@
 <?php
 
+
+
+
+
 /**
 * Calculate average high points of top users
 * when once every hour when cron runs --hook_cron()
@@ -103,45 +107,51 @@ function uprise_aura_points_user_login(&$edit, $account) {
     userpoints_userpointsapi($params);
 }
 
-
 /**
-* Implements hook_block_info().
-*/
+ * Implementation of hook_block_info().
+ */
 function uprise_aura_points_block_info() {
-  $blocks = array();
-
-  $blocks['UPRISE_AURA_POINTS_ABC'] = array(
-    'info' => t('Uprise Aura Points'),
-    'cache' => DRUPAL_NO_CACHE,
+  $blocks['user_profile_aura'] = array(
+    'info' => t('User Profile Aura'),
   );
-
   return $blocks;
 }
-
+ 
 /**
-* Implements hook_block_view().
-*/
-function uprise_aura_points_block_view($delta = '') {
+ * Implementation of hook_block_view().
+ */
+function uprise_aura_points_block_view($delta='') {
   $block = array();
-
   switch ($delta) {
-    case 'UPRISE_AURA_POINTS_ABC':
+    case 'user_profile_aura':
       $block['subject'] = '';
-      $block['content'] = _UPRISE_AURA_POINTS_BLOCK_ABC_CONTENT();
+      $block['content'] = uprise_aura_points_contents();
       break;
   }
-
   return $block;
 }
-
-function _UPRISE_AURA_POINTS_BLOCK_ABC_CONTENT() {
-    // Calculate user's aura level
-    $uid = arg(1);
-    $user_aura_level = uprise_aura_points_user_aura_level($uid);
+ 
+/**
+ * custom html block
+ * @return string
+ */
+function uprise_aura_points_contents() {
+    //TEMPORARY VALUE ERASE
+    $user_aura_level = 50;
     
-  $output = '
-    <div id="aura-container"><canvas id="aura"><p class="noCanvas">You need a <a href="http://www.google.com/chrome">modern browser</a> to view this.</p></canvas></div>
-    <div id="aura-level">Level: <span id="aura-level-value">' . $user_aura_level . '</span></div>
+    // Get user profile image to place inside aura
+    $user = user_load(arg(1));
+    
+    $profile_image = $user->content['user_picture']['#markup'];
+            
+            
+    
+  return
+  '
+    <div id="aura-container">
+        ' . $profile_image . '
+        <canvas id="aura"><p class="noCanvas">You need a <a href="http://www.google.com/chrome">modern browser</a> to view this.</p></canvas></div>
+        <div id="aura-level">upRise Level: <span id="aura-level-value">' . $user_aura_level . '</span>
+    </div>
   ';
-  return $output;
 }
