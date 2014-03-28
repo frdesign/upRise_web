@@ -1,0 +1,5 @@
+name = Uprise Miscellaneous Functions
+description = Standalone simple functions for uprise
+core = 7.x
+scripts[] = uprise_misc_functions.js
+package = upRise

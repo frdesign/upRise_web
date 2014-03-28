@@ -57,7 +57,7 @@ function uprise_aura_points_cron() {
 function uprise_aura_points_user_aura_level ($uid) {
     
     // Set percentage of user ranking to be used as aura (1=100%)
-    $high_aura_percent = .3;
+    $high_aura_percent = .1;
     
     // Get today's high average score
     $top_points = db_query_range('SELECT u.top_average_userpoints from {userpoints_uprise_top_average} u
@@ -98,14 +98,14 @@ function uprise_aura_points_user_aura_level ($uid) {
 * Add points to new members for certain user actions
 */
 
-function uprise_aura_points_user_login(&$edit, $account) {
-  // Add 5 points when new account is crated
-  $params = array (
-      'uid' => $account->uid,
-      'points' => 5,
-    );
-    userpoints_userpointsapi($params);
-}
+//function uprise_aura_points_user_login(&$edit, $account) {
+//  // Add 5 points when user logs in
+//  $params = array (
+//      'uid' => $account->uid,
+//      'points' => 5,
+//    );
+//    userpoints_userpointsapi($params);
+//}
 
 /**
  * Implementation of hook_block_info().
@@ -136,11 +136,15 @@ function uprise_aura_points_block_view($delta='') {
  * @return string
  */
 function uprise_aura_points_contents() {
-    //TEMPORARY VALUE ERASE
-    $user_aura_level = 50;
+    // Get uid
+    $viewed_uid = arg(1);
+    
+    //Get user aura level
+    $user_aura_level = uprise_aura_points_user_aura_level($viewed_uid);
     
     // Get user profile image to place inside aura
-    $user = user_load(arg(1));
+    $user = user_load($viewed_uid);
+    $user_name = $user->name;
     
     $profile_image = $user->content['user_picture']['#markup'];
             
@@ -148,6 +152,7 @@ function uprise_aura_points_contents() {
     
   return
   '
+    <h1 id="profile-user-name">' . $user_name . '</h1>
     <div id="aura-container">
         ' . $profile_image . '
         <canvas id="aura"><p class="noCanvas">You need a <a href="http://www.google.com/chrome">modern browser</a> to view this.</p></canvas></div>

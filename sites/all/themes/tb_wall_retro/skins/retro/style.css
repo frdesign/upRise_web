@@ -1035,7 +1035,7 @@ a#logo img {
 
 /*get rid of brown background image*/
 div#header-wrapper {
-    background: none repeat scroll 0% 0% #EC1C24;
+    background: none repeat scroll 0% 0% #EC1C24; /*Red color*/
 }
 
 /*Move menu to right*/
@@ -1043,9 +1043,13 @@ div#menu-bar-wrapper {
 	margin-left: 180px;
 }
 
+ul.sf-main-menu li a {
+	letter-spacing: 1px;
+}
+
 /*Search form*/
 #header form#search-block-form {
-    background: #00A7AE;
+    background: #00A7AE; /*teal color*/
     border: 1px solid #0C888E;
 }
 
@@ -1060,7 +1064,66 @@ body {
 	background-image: none;
 }
 
+/*Player inside Modal ***************/
+body div#player {
+	width: 90% !important;
+}
+
+
+/*NODE *********************/
+
+/*Tabs*/
+div.tabs li a {
+	background-color: #EC1C24;
+}
+
+/*Node creator photo*/
+div.user-picture {
+	width: 55px !important;
+}
+
+div.user-picture img {
+	width: 50px;
+	height: 50px;
+}
+
+/*Position Video embed description lower*/
+div.video-embed-description {
+	padding-top: 10px;
+}
+
+/*Fix comment photo floating to the top of the page*/
+.comment .user-picture {
+	position: relative !important;
+	padding-bottom: 15px;
+}
+
+/*hide comment title*/
+h3.comment-title {
+	display: none;
+}
+
+/*Make comment body text larger*/
+div.field-name-comment-body p {
+	font-size: 16px;
+}
+
+/*Make node link button text white */
+.node-full .node-links ul.links li a {
+	color: white;
+}
+
 /*PANELS USER PROFILE OVERRIDES ------------------------------------*/
+
+/*Make upRise level pretty*/
+#profile-user-name  {
+	color: #00A7AE;
+	margin: 0 0 10px 20px;
+	padding: 0 0 5px 10px;
+	border-radius: 10px; 
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
 
 #public_profile .user-picture img{
 	width: 100px;
@@ -1069,12 +1132,37 @@ body {
 	-moz-border-radius: 55px;
 	-webkit-border-radius: 55px;
 	position: absolute;
-	margin: 85px 0 0 85px;
+	margin: 85px 0 0 85px;	
 	border: 5px solid white;
 }
 
+/*Make aura circular*/
 canvas#aura {
 	border-radius: 140px; 
 	-moz-border-radius: 140px;
 	-webkit-border-radius: 140px;
+}
+
+/*Make upRise level pretty*/
+div#aura-level {
+	background-color: #00A7AE;
+	width: 140px;
+	margin: 20px 0 0 20px;
+	padding: 0 0 5px 10px;
+	font-size: 12px;
+	text-align: center;
+	color: white;
+	border-radius: 10px; 
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+span#aura-level-value {
+	background-color: #EC1C24;
+	font-size: 20px;
+	padding: 9px 11px 14px 11px;
+	color: white;
+	border-radius: 10px; 
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 }
