@@ -1092,6 +1092,22 @@ div.video-embed-description {
 	padding-top: 10px;
 }
 
+li span.flag-hi-five a.flag-action {
+	background-image: url('images/hifive_icon.png');
+	background-size: 30px 30px;
+	background-repeat: no-repeat;
+	padding: 10px 0 20px 30px;  /* width of the image plus a little extra padding */
+	margin: 0 20px;
+}
+
+li span.flag-hi-five a.unflag-action {
+	background-image: url('images/hifive_light_icon.png');
+	background-size: 30px 30px;
+	background-repeat: no-repeat;
+	padding: 10px 0 20px 30px;  /* width of the image plus a little extra padding */
+	margin: 0 20px;
+}
+
 /*Fix comment photo floating to the top of the page*/
 .comment .user-picture {
 	position: relative !important;
@@ -1110,8 +1126,30 @@ div.field-name-comment-body p {
 
 /*Make node link button text white */
 .node-full .node-links ul.links li a {
-	color: white;
+	color: #D36B45;
 }
+
+/*Hide text format selector for web link content type*/
+form#web-link-node-form fieldset#edit-body-und-0-format {
+	display: none;
+}
+
+/*Fix ugly layout for web link teaser in front page*/
+.opengraph-filter .right {
+	margin-left: 0;
+	float: left;
+}
+
+/*Spread out share this links*/
+div.sharethis-buttons {
+	margin-left: 50%;
+}
+
+.sharethis-buttons span {
+	/*margin-right: 20px !important;*/
+}
+
+
 
 /*PANELS USER PROFILE OVERRIDES ------------------------------------*/
 
@@ -1165,4 +1203,9 @@ span#aura-level-value {
 	border-radius: 10px; 
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
+}
+
+/*Move cancel account button away from save button*/
+span.edit-cancel {
+	float: right;
 }
