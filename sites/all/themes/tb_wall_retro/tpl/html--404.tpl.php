@@ -70,8 +70,7 @@
 			  <div class="description-404">Sorry but the page you are looking for cannot be found.</div>
 			  <span>Back to</span>
 			  <a class="home-404" href="<?php print $GLOBALS['base_url']?>">Home</a>&nbsp;/&nbsp;
-			  <a class="blog-404" href="<?php print $GLOBALS['base_url']?>/blog">Blog</a>&nbsp;/&nbsp;
-			  <a class="showcase-404" href="<?php print $GLOBALS['base_url']?>/showcase">Showcase</a> </div>
+
             </div>
           </div>
 		</div>

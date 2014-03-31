@@ -1069,6 +1069,10 @@ body div#player {
 	width: 90% !important;
 }
 
+/* Colorbox popup iframe */
+body.tb-wall-popup-iframe {
+	padding: 15px;
+}
 
 /*NODE *********************/
 
@@ -1090,6 +1094,13 @@ div.user-picture img {
 /*Position Video embed description lower*/
 div.video-embed-description {
 	padding-top: 10px;
+}
+
+/*Hi five flag styles
+Images are in TB wall theme inside Skins image folder*/
+li span.flag-hi-five a {
+	font-weight: bold;
+	font-size: 1em;
 }
 
 li span.flag-hi-five a.flag-action {
@@ -1142,7 +1153,8 @@ form#web-link-node-form fieldset#edit-body-und-0-format {
 
 /*Spread out share this links*/
 div.sharethis-buttons {
-	margin-left: 50%;
+	float: right;
+	margin-right: 20px;
 }
 
 .sharethis-buttons span {
@@ -1154,10 +1166,29 @@ div.sharethis-buttons {
 /*PANELS USER PROFILE OVERRIDES ------------------------------------*/
 
 /*Make upRise level pretty*/
+#profile-title {
+	padding: 0 0 20px 0;
+}
+
 #profile-user-name  {
 	color: #00A7AE;
-	margin: 0 0 10px 20px;
-	padding: 0 0 5px 10px;
+	margin: 0 15px 10px 20px;
+	font-size: 2em;
+	font-weight: bold;
+}
+
+/*Make upRise level pretty*/
+#aura-level {
+	margin: 0 0 0 20px;
+	font-size: 12px;
+	font-weight: bold; 
+}
+
+#aura-level-value {
+	background-color: #EC1C24;
+	font-size: 16px;
+	padding: 5px 9px 5px 9px;
+	color: white;
 	border-radius: 10px; 
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
@@ -1179,30 +1210,34 @@ canvas#aura {
 	border-radius: 140px; 
 	-moz-border-radius: 140px;
 	-webkit-border-radius: 140px;
+	margin-bottom: 5px;
 }
 
-/*Make upRise level pretty*/
-div#aura-level {
-	background-color: #00A7AE;
-	width: 140px;
-	margin: 20px 0 0 20px;
-	padding: 0 0 5px 10px;
-	font-size: 12px;
-	text-align: center;
-	color: white;
-	border-radius: 10px; 
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+
+/*Follow flag styles
+Images are in TB wall theme inside Skins image folder*/
+.flag-follow-users a {
+	font-weight: bold;
+	font-size: 1.2em;
+	background-size: 22px 40px;
+	background-repeat: no-repeat;
+	padding: 10px 0 20px 35px;  /* width of the image plus a little extra padding */
+	margin: 40px 0 0 30px;
 }
 
-span#aura-level-value {
-	background-color: #EC1C24;
-	font-size: 20px;
-	padding: 9px 11px 14px 11px;
-	color: white;
-	border-radius: 10px; 
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+.flag-follow-users a.flag-action {
+	background-image: url('images/follow_icon.png');
+	
+}
+
+.flag-follow-users a.unflag-action {
+	background-image: url('images/following_icon.png');
+	
+}
+
+/*Fix ugly links field label in edit profile tab*/
+#field-links-values th label {
+	padding-left: 20px;
 }
 
 /*Move cancel account button away from save button*/
