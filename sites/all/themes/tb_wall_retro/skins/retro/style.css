@@ -1076,6 +1076,21 @@ body.tb-wall-popup-iframe {
 
 /*NODE *********************/
 
+/*Hide node title from certain node types - quotes*/
+.node-quotes h2.node-title {
+	display: none;
+}
+
+/*Make quote's text prettier*/
+.node-quotes div.field-name-body {
+	font-size: 1.5em;
+}
+
+/*Hide citations field on Quote node create form*/
+div.form-item-quotes-citation {
+	display: none;
+}
+
 /*Tabs*/
 div.tabs li a {
 	background-color: #EC1C24;
@@ -1141,9 +1156,14 @@ div.field-name-comment-body p {
 }
 
 /*Hide text format selector for web link content type*/
-form#web-link-node-form fieldset#edit-body-und-0-format {
+form#web-link-node-form fieldset#edit-field-link-und-0-format {
 	display: none;
 }
+
+/*FRONT PAGE OVERRIDES******************************************/
+
+/*Blue class for front page teaser videos*/
+
 
 /*Fix ugly layout for web link teaser in front page*/
 .opengraph-filter .right {
@@ -1157,10 +1177,15 @@ div.sharethis-buttons {
 	margin-right: 20px;
 }
 
-.sharethis-buttons span {
-	/*margin-right: 20px !important;*/
+/*Get rid of ripped paper effect on botton of teasers*/
+.grid.views-col .grid-inner .node:before {
+	display: none;
 }
 
+/*Fill gap left from bottom of teasers by adding padding*/
+.grid.views-col .grid-inner .node {
+	padding-bottom: 10px;
+}
 
 
 /*PANELS USER PROFILE OVERRIDES ------------------------------------*/
