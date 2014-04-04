@@ -154,11 +154,11 @@ function uprise_aura_points_contents() {
   '
     <div id="profile-title">
         <div id="profile-user-name">' . $user_name . '</div>
-        <div id="aura-level">upRise Level: <span id="aura-level-value">' . $user_aura_level . '</div>
+        <div id="aura-level">Cloud Level: <span id="aura-level-value">' . $user_aura_level . '</div>
     </div>
     <div id="aura-container">
         ' . $profile_image . '
-        <canvas id="aura"><p class="noCanvas">You need a <a href="http://www.google.com/chrome">modern browser</a> to view this.</p></canvas></div>
+        <canvas id="aura"><p class="noCanvas">Sorry, you need a <a href="http://www.google.com/chrome">modern browser</a> to view this.</p></canvas></div>
         
   ';
 }

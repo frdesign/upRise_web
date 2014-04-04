@@ -1047,6 +1047,11 @@ ul.sf-main-menu li a {
 	letter-spacing: 1px;
 }
 
+/*Change color of active main menu link*/
+.block .sf-menu.sf-style-wall .active-trail .sf-depth-1 {
+	color: #93d2b8;
+}
+
 /*Search form*/
 #header form#search-block-form {
     background: #00A7AE; /*teal color*/
@@ -1062,9 +1067,10 @@ ul.sf-main-menu li a {
 /*BODY ***************/
 body {
 	background-image: none;
+	font-family: Sans-Serif !important;
 }
 
-/*Player inside Modal ***************/
+/*Player inside Modal */
 body div#player {
 	width: 90% !important;
 }
@@ -1076,6 +1082,12 @@ body.tb-wall-popup-iframe {
 
 /*NODE *********************/
 
+/*Increase node content size*/
+.node-full div.node-content {
+	font-size: 1.5em;
+	color: black;
+}
+
 /*Hide node title from certain node types - quotes*/
 .node-quotes h2.node-title {
 	display: none;
@@ -1084,11 +1096,17 @@ body.tb-wall-popup-iframe {
 /*Make quote's text prettier*/
 .node-quotes div.field-name-body {
 	font-size: 1.5em;
+	line-height: 1.3em;
 }
 
 /*Hide citations field on Quote node create form*/
 div.form-item-quotes-citation {
 	display: none;
+}
+
+/*Move node links in quote previes downs so they dont crash against quote author*/
+.grid.views-col .node-links ul.links {
+	margin-top: 20px;
 }
 
 /*Tabs*/
@@ -1159,6 +1177,9 @@ div.field-name-comment-body p {
 form#web-link-node-form fieldset#edit-field-link-und-0-format {
 	display: none;
 }
+#block-system-help {
+	background-position: 14px 9px;
+}
 
 /*FRONT PAGE OVERRIDES******************************************/
 
@@ -1187,6 +1208,38 @@ div.sharethis-buttons {
 	padding-bottom: 10px;
 }
 
+/*Color change for front page teasers*/
+
+.grid.views-col.tb-wall-black-background .grid-inner .node {
+  background: #4B4B4B;
+}
+
+.grid.views-col.tb-wall-green-background .grid-inner .node {
+  background: #8AC0B0;
+}
+
+.grid.views-col.tb-wall-yellow-background .grid-inner .node {
+  background: #EC1C24;
+}
+
+.grid.views-col.tb-wall-blue-background .grid-inner .node {
+  background: #266f69;
+}
+
+.grid.views-col.tb-wall-red-background .grid-inner .node {
+   background-color: #EC1C24;
+   border-color: #fff;
+   color: #fff;
+}
+
+.grid.views-col.tb-wall-black-background .grid-inner .node:hover,
+.grid.views-col.tb-wall-blue-background .grid-inner .node:hover,
+.grid.views-col.tb-wall-green-background .grid-inner .node:hover,
+.grid.views-col.tb-wall-yellow-background .grid-inner .node:hover,
+.grid.views-col.tb-wall-red-background .grid-inner .node:hover,
+.grid.views-col .grid-inner .node:hover{
+	border: 2px solid #EC1C24;
+}
 
 /*PANELS USER PROFILE OVERRIDES ------------------------------------*/
 
@@ -1219,7 +1272,7 @@ div.sharethis-buttons {
 	-webkit-border-radius: 10px;
 }
 
-#public_profile .user-picture img{
+#public_profile div#aura-container .user-picture img{
 	width: 100px;
 	height: auto;
 	border-radius: 55px; 

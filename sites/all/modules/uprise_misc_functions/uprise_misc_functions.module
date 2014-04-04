@@ -9,3 +9,11 @@
 */
 
 
+/**
+* Implementation of hook_menu_alter
+* ADD tabs to huser profile
+*/
+function uprise_misc_functions_menu_alter(&$items) {
+$items['user/%user/gallery']['title'] = t('Gallery');
+$items['user/%user/gallery']['type'] = MENU_LOCAL_TASK;
+}

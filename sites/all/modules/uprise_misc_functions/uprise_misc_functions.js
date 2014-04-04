@@ -8,13 +8,16 @@
     $('.node-video li.node-readmore a').text('Watch video');
     
     //Change "Read more" link to Rate for quotes nodes
-    $('.node-quotes li.node-readmore a').text('Rate');
+    $('.node-quotes li.node-readmore a').text('Share');
     
     // Make videos black in homepage
     $('.node-teaser.node-video').parent().parent().addClass('tb-wall-blue-background') // tb-wall-double-style
     
     // Make quotes blue in homepage
     $('.node-teaser.node-quotes').parent().parent().addClass('tb-wall-black-background') // tb-wall-double-style
+    
+    // Make status orange
+    $('.node-teaser.node-status').parent().parent().addClass('tb-wall-yellow-background') // tb-wall-double-style
     
     //Remove colorbox functionality on teasers
     $('.node-teaser a').removeClass('colorbox-load init-colorbox-load-processed cboxElement');
@@ -28,19 +31,17 @@
     });
     
     // Open Web Links in new window
-    $('.node-web-link div.field-type-text-with-summary a').attr('target','_blank');
+    $('.node-web-link div.field-name-field-link a').attr('target','_blank');
     
     // Turn add content links in node type page into buttons
     $('dl.node-type-list a').addClass('typo-tag tag-rounded tag-black');
     
-    // Try to open Manin Menu links to add nodes on colorbox
-    $('.sf-main-menu .sf-item-3 a').addClass('colorbox-load');
+    // Hide title for status node types
+    $('.node-status h2.node-title').hide();
     
     // Change profile "view" tabl to just "profile"
-    $('body.logged-in.page-user ul.tabs li:first a').text('Profile');
+    $('body.logged-in.page-user ul.tabs li:first a').text('Cloud');
     
-    // Change profile "track" tab to just "Posts"
-    $('body.logged-in.page-user ul.tabs li:nth-child(4) a').text('Posts');
     
    });
 })(jQuery); 
