@@ -3,6 +3,13 @@
   // Jquery onload function.
   $(document).ready(function(){
     
+    //USER PROFILE ---------------------------------
+    
+    //Turn follow links into buttons
+    $('.flag-follow-users a.flag-action').addClass('typo-btn btn-danger typo-btn-sm btn-sm-danger');
+    $('.flag-follow-users a.unflag-action').addClass('typo-btn btn-default typo-btn-sm btn-sm-default')
+    
+    // FRONT PAGE ------------------------------------
     
     //Change "Read more" link to Play video for video nodes
     $('.node-video li.node-readmore a').text('Watch video');
@@ -44,4 +51,5 @@
     
     
    });
-})(jQuery); 
+})(jQuery);
+

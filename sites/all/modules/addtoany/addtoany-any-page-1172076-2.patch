@@ -1,0 +1,18 @@
+diff --git a/addtoany.module b/addtoany.module
+index f73ceab..cc87381 100644
+--- a/addtoany.module
++++ b/addtoany.module
+@@ -241,9 +241,11 @@ function _addtoany_create_button($node=NULL, $teaser = FALSE) {
+ 	if (is_object($node)) {
+ 	  	$link_name 	= (module_exists('page_title')) ? page_title_page_get_title() : $node->title;
+ 		$link_url 	= url('node/' . $node->nid, array('absolute' => 1));
+-	} else { // Front page
++	} else { // Link to current URL
+ 		$link_name	= (module_exists('page_title')) ? page_title_page_get_title() : variable_get('site_name', 'Drupal');
+-		$link_url = url('<front>', array('absolute' => 1));
++		$link_url = (!empty($_SERVER['HTTPS'])) ?
++      "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] :
++      "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+ 	}
+ 	
+ 	$javascript = ($disable_dropdown) ? '' : _addtoany_create_script($_addtoany_counter, $link_name, $link_url);

@@ -10,10 +10,94 @@
 
 
 /**
-* Implementation of hook_menu_alter
-* ADD tabs to huser profile
+* Add block with slider for front of website
 */
-function uprise_misc_functions_menu_alter(&$items) {
-$items['user/%user/gallery']['title'] = t('Gallery');
-$items['user/%user/gallery']['type'] = MENU_LOCAL_TASK;
+
+// TODO: Create block, add images to site
+/**
+ * Implementation of hook_block_info().
+ */
+function uprise_misc_functions_block_info() {
+  $blocks['uprise_home_slider'] = array(
+    'info' => t('Uprise home slider'),
+  );
+  return $blocks;
+}
+ 
+/**
+ * Implementation of hook_block_view().
+ */
+function uprise_misc_functions_block_view($delta='') {
+  $block = array();
+  switch ($delta) {
+    case 'uprise_home_slider':
+      $block['subject'] = '';
+      $block['content'] = uprise_home_slider_contents();
+      break;
+  }
+  return $block;
+}
+ 
+/**
+ * custom html block
+ * @return string
+ */
+function uprise_home_slider_contents() {
+   
+            
+            
+    
+  return
+  '
+  <style>
+
+		#back_to_camera {
+			clear: both;
+			display: block;
+			height: 80px;
+			line-height: 40px;
+			padding: 20px;
+		}
+		.fluid_container {
+			margin: 0 auto;
+			max-width: 1000px;
+			width: 90%;
+		}
+	</style>
+        
+        <script>
+		jQuery(function(){
+			
+			jQuery("#camera_wrap_1").camera({
+				thumbnails: true
+			});
+		});
+	</script>
+  
+    <div class="fluid_container">
+
+        <div class="camera_wrap camera_azure_skin" id="camera_wrap_1">
+            <div data-thumb="/sites/default/files/slides/thumbs/bridge.jpg" data-src="/sites/default/files/slides/bridge.jpg">
+                <div class="camera_caption fadeFromBottom">
+                    <a href="/user/register">Join the movement!</a>
+		</div>
+            </div>
+            <div data-thumb="/sites/default/files/slides/thumbs/leaf.jpg" data-src="/sites/default/files/slides/leaf.jpg">
+                <div class="camera_caption fadeFromBottom">
+                    <a href="/user/register">Join the movement!</a>
+                </div>
+            </div>
+            <div data-thumb="/sites/default/files/slides/thumbs/road.jpg" data-src="/sites/default/files/slides/road.jpg">
+                <div class="camera_caption fadeFromBottom">
+                    <a href="/user/register">Join the movement!</a>
+                </div>
+            </div>
+            
+        </div><!-- #camera_wrap_1 -->
+
+
+    </div><!-- .fluid_container -->
+
+        
+  ';
 }
