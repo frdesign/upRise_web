@@ -4,7 +4,7 @@ core = 7.x
 scripts[] = uprise_misc_functions.js
 scripts[] = slider_scripts/jquery.mobile.customized.min.js
 scripts[] = slider_scripts/jquery.easing.1.3.js
-scripts[] = slider_scripts/camera.min.js
+scripts[] = slider_scripts/camera.js
 
 stylesheets[all][] = css/camera.css
 package = upRise

@@ -153,6 +153,7 @@
 }
 .camera_caption > div {
 	padding: 10px 20px;
+	font-size: 1.5em;
 }
 .camerarelative {
 	overflow: hidden;
