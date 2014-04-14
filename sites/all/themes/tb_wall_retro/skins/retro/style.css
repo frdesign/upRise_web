@@ -462,11 +462,11 @@ a:focus {
 }
 
 .grid.views-col.tb-wall-red-background .node-links ul.links li.node-readmore a:before {
-  background: url("images/bg-read-more-white-l.png") no-repeat left top;
+  /*background: url("images/bg-read-more-white-l.png") no-repeat left top;*/
 }
 
 .grid.views-col.tb-wall-red-background .node-links ul.links li.node-readmore a {
-  background: url("images/bg-read-more-white-r.png") no-repeat right top;
+  /*background: url("images/bg-read-more-white-r.png") no-repeat right top;*/
   color: #9C7073;
 }
 
@@ -550,7 +550,7 @@ a:focus {
 }
 
 .grid.views-col .grid-inner .node-links ul.links li.node-readmore a:before {
-	background: url("images/bg-read-more-l.png") no-repeat left top;
+	/*background: url("images/bg-read-more-l.png") no-repeat left top;*/
 	content: "";    
 	position: absolute;
 	left: -10px;
@@ -564,7 +564,7 @@ a:focus {
 }
 
 .grid.views-col .grid-inner .node-links ul.links li.node-readmore a {
-    background: url("images/bg-read-more-r.png") no-repeat right top;
+    /*background: url("images/bg-read-more-r.png") no-repeat right top;*/
 	color: #666;
 	padding: 2px 10px 3px 0px;
 	border: none;
@@ -576,12 +576,12 @@ a:focus {
 
 .grid.views-col .grid-inner .node:hover li.node-readmore a:before,
 .grid.views-col.tb-wall-red-background .node:hover .node-links ul.links li.node-readmore a:before {
-  background: url("images/bg-read-more-over-l.png");
+  /*background: url("images/bg-read-more-over-l.png");*/
 }
 
 .grid.views-col .grid-inner .node:hover li.node-readmore a,
 .grid.views-col.tb-wall-red-background .node:hover .node-links ul.links li.node-readmore a {
-    background: url("images/bg-read-more-over-r.png") no-repeat right top;
+    /*background: url("images/bg-read-more-over-r.png") no-repeat right top;*/
 	color: #fff;
 	text-shadow: none;
 	border: none;
@@ -668,20 +668,20 @@ span.button input.form-submit:focus {
 }
 
 .grid.views-col.tb-wall-black-background .node-links ul.links li.node-readmore a:before {
-  background: url("images/bg-read-more-white3-l.png") no-repeat left top;
+  /*background: url("images/bg-read-more-white3-l.png") no-repeat left top;*/
 }
 
 .grid.views-col.tb-wall-black-background .node-links ul.links li.node-readmore a {
-	background: url("images/bg-read-more-white-r.png") no-repeat right top;
+	/*background: url("images/bg-read-more-white-r.png") no-repeat right top;*/
 	color: #999;
 }
 
 .grid.views-col.tb-wall-black-background .grid-inner .node:hover li.node-readmore a:before {
-  background: url("images/bg-read-more-over-l.png") no-repeat left top;
+  /*background: url("images/bg-read-more-over-l.png") no-repeat left top;*/
 }
 
 .grid.views-col.tb-wall-black-background .node:hover .node-links ul.links li.node-readmore a {
-  background: url("images/bg-read-more-over-r.png") no-repeat right top;
+  /*background: url("images/bg-read-more-over-r.png") no-repeat right top;*/
   color: #fff;
 }
 
@@ -756,26 +756,26 @@ span.button input.form-submit:focus {
 .grid.views-col.tb-wall-blue-background .node-links ul.links li.node-readmore a:before,
 .grid.views-col.tb-wall-green-background .node-links ul.links li.node-readmore a:before,
 .grid.views-col.tb-wall-yellow-background .node-links ul.links li.node-readmore a:before {
-  background: url("images/bg-read-more-white-l.png") no-repeat left top;
+  /*background: url("images/bg-read-more-white-l.png") no-repeat left top;*/
 }
 
 .grid.views-col.tb-wall-blue-background .node-links ul.links li.node-readmore a,
 .grid.views-col.tb-wall-green-background .node-links ul.links li.node-readmore a,
 .grid.views-col.tb-wall-yellow-background .node-links ul.links li.node-readmore a {
-	background: url("images/bg-read-more-white-r.png") no-repeat right top;
+	/*background: url("images/bg-read-more-white-r.png") no-repeat right top;*/
 	color: #8AC0B0;
 }
 
 .grid.views-col.tb-wall-blue-background .grid-inner .node:hover li.node-readmore a:before,
 .grid.views-col.tb-wall-green-background .grid-inner .node:hover li.node-readmore a:before,
 .grid.views-col.tb-wall-yellow-background .grid-inner .node:hover li.node-readmore a:before {
-  background: url("images/bg-read-more-over-l.png") no-repeat left top;
+  /*background: url("images/bg-read-more-over-l.png") no-repeat left top;*/
 }
 
 .grid.views-col.tb-wall-blue-background .node:hover .node-links ul.links li.node-readmore a,
 .grid.views-col.tb-wall-green-background .node:hover .node-links ul.links li.node-readmore a,
 .grid.views-col.tb-wall-yellow-background .node:hover .node-links ul.links li.node-readmore a {
-  background: url("images/bg-read-more-over-r.png") no-repeat right top;
+  /*background: url("images/bg-read-more-over-r.png") no-repeat right top;*/
   color: #fff;
 }
 
@@ -1269,7 +1269,51 @@ div.sharethis-buttons {
 .grid.views-col.tb-wall-red-background .grid-inner .node:hover,
 .grid.views-col .grid-inner .node:hover{
 	border: 2px solid #EC1C24;
+	padding: 14px 14px 10px 14px;
 }
+
+/*Unify read more links*/
+
+.grid.views-col .grid-inner .node-links ul.links li.node-readmore a:focus,
+.grid.views-col .grid-inner .node-links ul.links li.node-readmore a:hover {
+	background-color: #EC1C24 !important;
+	color: white !important;
+}
+
+.grid.views-col .grid-inner .node-links ul.links li.node-readmore a {
+	background-color: gray;
+	color: white;
+	padding-left: 7px;
+	font-size: 1.1em;
+}
+
+
+
+/*Front page user views*/
+
+div.view-front-page-member-views ul li.views-row {
+	float: left;
+	background: none;
+	margin: 0;
+	padding: 0;
+}
+
+div.view-front-page-member-views ul li.views-row img{
+	padding: 0;
+	margin: 0;
+}
+
+div.pane-front-page-member-views h2.pane-title {
+	clear: both !important;
+	color: #EC1C24;
+}
+
+div.pane-front-page-member-views div.more-link {
+	clear: both !important;
+	font-size: 1.2em;
+}
+
+
 
 /*PANELS USER PROFILE OVERRIDES ------------------------------------*/
 
@@ -1363,6 +1407,11 @@ span.edit-cancel {
 	
 }
 
+/*Edit account tab*/
+div.form-item-picture-delete {
+	display: none;
+}
+
 
 /*OVERLAY USER CONTENT TYPE CREATION FOMRS***********************************************/
 
@@ -1382,4 +1431,15 @@ div#overlay-content div#main-wrapper {
 /*fix login form text fields being way too wide*/
 #user-login .form-item input.form-text {
 	width: 334px;
+}
+
+/*GLOBAL*********************************************************/
+
+/*Make notifications stand out more*/
+#system-messages-wrapper .grid-inner div.messages {
+	margin: 35px 10px 5px;
+	border: 3px solid #EC1C24;
+	color: #EC1C24;
+	font-size: 1.3em;
+	font-weight: 600;
 }

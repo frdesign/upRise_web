@@ -3,11 +3,24 @@
   // Jquery onload function.
   $(document).ready(function(){
     
+    // GLOBAL ------------------------------------
+    
+    
     //USER PROFILE ---------------------------------
     
     //Turn follow links into buttons
     $('.flag-follow-users a.flag-action').addClass('typo-btn btn-danger typo-btn-sm btn-sm-danger');
-    $('.flag-follow-users a.unflag-action').addClass('typo-btn btn-default typo-btn-sm btn-sm-default')
+
+    
+    $('.flag-follow-users a.unflag-action').addClass('typo-btn btn-default typo-btn-sm btn-sm-default');
+    
+    // Change profile "view" tab to just "profile"
+    $('body.page-user- ul.tabs li:first a').text('Cloud');
+    
+    // Change "edit account" form items
+    $('div#edit-account .password-parent label').text('Create NEW password');
+    $('div#edit-account .confirm-parent label').text('Confirm NEW password');
+    
     
     // FRONT PAGE ------------------------------------
     
@@ -46,8 +59,7 @@
     // Hide title for status node types
     $('.node-status h2.node-title').hide();
     
-    // Change profile "view" tabl to just "profile"
-    $('body.logged-in.page-user ul.tabs li:first a').text('Cloud');
+    
     
     
    });

@@ -79,27 +79,27 @@ function uprise_home_slider_contents() {
         <div class="camera_wrap camera_azure_skin" id="camera_wrap_1">
             <div data-thumb="/sites/default/files/slides/thumbs/0_butterfly.jpg" data-src="/sites/default/files/slides/0_butterfly.jpg">
                 <div class="camera_caption fadeFromBottom">
-                    Start your revolution. <a href="/user/register">Join us!</a>
+                    Claim your cloud. <a href="/user/register">Join today!</a>
 		</div>
             </div>
             <div data-thumb="/sites/default/files/slides/thumbs/1_hero.jpg" data-src="/sites/default/files/slides/1_hero.jpg">
                 <div class="camera_caption fadeFromBottom">
-                    Get inspired. <a href="/user/register">Join us!</a>
+                    Inspiration, pass it on. <a href="/user/register">Join us!</a>
                 </div>
             </div>
             <div data-thumb="/sites/default/files/slides/thumbs/2_rocketeer.jpg" data-src="/sites/default/files/slides/2_rocketeer.jpg">
                 <div class="camera_caption fadeFromBottom">
-                    For life above average. <a href="/user/register">Join us!</a>
+                    Your cloud is waiting. <a href="/user/register">Join myupRise!</a>
                 </div>
             </div>
             <div data-thumb="/sites/default/files/slides/thumbs/3_angel.jpg" data-src="/sites/default/files/slides/3_angel.jpg">
                 <div class="camera_caption fadeFromBottom">
-                    Help us spread inspiration. <a href="/user/register">Join us!</a>
+                    Become the inspiration. <a href="/user/register">Join now!</a>
                 </div>                                                                
             </div>
             <div data-thumb="/sites/default/files/slides/thumbs/4_combined.jpg" data-src="/sites/default/files/slides/4_combined.jpg">
                 <div class="camera_caption fadeFromBottom">
-                    Start your upRise. <a href="/user/register">Join us!</a>
+                    Begin your upRise. <a href="/user/register">Join us!</a>
                 </div>                                                                
             </div>
         </div><!-- #camera_wrap_1 -->
