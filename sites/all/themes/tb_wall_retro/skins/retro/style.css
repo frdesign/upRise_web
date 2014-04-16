@@ -1146,25 +1146,45 @@ div.video-embed-description {
 
 /*Uprise flag styles
 Images are in TB wall theme inside Skins image folder*/
-li span.flag-hi-five a {
-	font-weight: bold;
-	font-size: 1em;
+li span.flag-uprise a {
+	font-weight: 500;
+	font-size: 1.3em;
 }
 
-li span.flag-hi-five a.flag-action {
-	background-image: url('images/hifive_icon.png');
-	background-size: 30px 30px;
-	background-repeat: no-repeat;
-	padding: 10px 0 20px 30px;  /* width of the image plus a little extra padding */
-	margin: 0 20px;
+li span.flag-uprise a.flag-action {
+	background-color: #EC1C24;
+	color: #fff !important;
+	border:none;
+	text-align: center;
+	height: 25px;
+	padding: 10px 20px 0;
+	margin: 0 0 20px 0;
+	color: transparent;
 }
 
-li span.flag-hi-five a.unflag-action {
-	background-image: url('images/hifive_light_icon.png');
-	background-size: 30px 30px;
-	background-repeat: no-repeat;
-	padding: 10px 0 20px 30px;  /* width of the image plus a little extra padding */
-	margin: 0 20px;
+li span.flag-uprise a.flag-action:focus,
+li span.flag-uprise a.flag-action:hover{
+	background-color: gray;
+}
+
+li span.flag-uprise a.unflag-action {
+	background-color: gray;
+	color: #fff !important;
+	border:none;
+	text-align: center;
+	height: 25px;
+	padding: 10px 20px 0;
+	margin: 0 0 20px 0;
+	color: transparent;
+}
+
+li span.flag-uprise a.unflag-action:focus,
+li span.flag-uprise a.unflag-action:hover{
+	background-color:  #EC1C24;
+}
+
+span.flag-success-message {
+	margin-top: 12px;
 }
 
 /*Fix comment photo floating to the top of the page*/
