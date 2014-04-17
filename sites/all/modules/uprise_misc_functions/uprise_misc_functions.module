@@ -1,19 +1,35 @@
 <?php
 
-
-
-
-
 /**
 * Random functions can be placed here
 */
 
+/**
+* Add OR to queries with 2 or more contextual filters
+*/
+
+
+
 
 /**
 * Add block with slider for front of website
+* Rest of code in views.inc file
 */
 
-// TODO: Create block, add images to site
+function uprise_misc_functions_views_api() {
+  return array(
+    'api' => 3,
+  );
+}
+
+function uprise_misc_functions_views_pre_render(&$view) {
+    if ($view->name == 'user_cloud') {
+        //dpm($view->result);
+        $view->result = array_reverse($view->result);
+    }
+    
+}
+
 /**
  * Implementation of hook_block_info().
  */
