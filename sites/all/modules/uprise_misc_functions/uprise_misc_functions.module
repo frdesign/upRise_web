@@ -22,13 +22,6 @@ function uprise_misc_functions_views_api() {
   );
 }
 
-function uprise_misc_functions_views_pre_render(&$view) {
-    if ($view->name == 'user_cloud') {
-        //dpm($view->result);
-        $view->result = array_reverse($view->result);
-    }
-    
-}
 
 /**
  * Implementation of hook_block_info().
@@ -36,6 +29,10 @@ function uprise_misc_functions_views_pre_render(&$view) {
 function uprise_misc_functions_block_info() {
   $blocks['uprise_home_slider'] = array(
     'info' => t('Uprise home slider'),
+  );
+  
+  $blocks['uprise_user_cloud_view'] = array(
+    'info' => t('Uprise user cloud view'),
   );
   return $blocks;
 }
@@ -46,11 +43,19 @@ function uprise_misc_functions_block_info() {
 function uprise_misc_functions_block_view($delta='') {
   $block = array();
   switch ($delta) {
+    //Front page slider for anonymous users
     case 'uprise_home_slider':
       $block['subject'] = '';
       $block['content'] = uprise_home_slider_contents();
       break;
+    
+    //View of cloud user created and flagged content
+    case 'uprise_user_cloud_view':
+        $block['subject'] = '';
+        $block['content'] = uprise_cloud_view_render();
+        break;
   }
+  
   return $block;
 }
  
@@ -125,4 +130,88 @@ function uprise_home_slider_contents() {
 
         
   ';
+}
+
+
+/**
+ * Implementation of hook_view_render().
+ * Get view for user cloud and add custom sort so flagged items are sorted
+ * by flagged by user date and float to the top of the cloud regardless
+ * of when it was originally authored. This keeps newly uprised to cloud
+ * content from getting buried, uprising it gives it new life in the user's cloud.
+ */
+
+function uprise_cloud_view_render($display_id = NULL) {
+  // As the custom sorting probably only works for a specific view,
+  // we 'demote' the former $name function parameter of 'views_get_view_result()'
+  // and set it within the function:
+  $name = 'user_cloud';
+  // Prepare a default output in case the view definition can not be found
+  // TODO: Decide what to return in that case (using empty string for now)
+  $output = 'master';
+
+  // Then we create the result just as 'views_get_view_result()' would do it:
+  $args = func_get_args();
+  if (count($args)) {
+    array_shift($args); // remove $display_id
+  }
+
+  $view = views_get_view($name);
+  if (is_object($view)) {
+    if (is_array($args)) {
+      $view->set_arguments($args);
+    }
+    if (is_string($display_id)) {
+      $view->set_display($display_id);
+    }
+    else {
+      $view->init_display();
+    }
+    $view->pre_execute();
+    $view->execute();
+    
+    
+    // 'views_get_view_result()' would just return $view->result here,
+    // but we need to go on, reordering the result:
+    $resorted_view_result = get_sort_values($view->result);
+    // Reverse the results (DESC)
+    $view->result = array_reverse($resorted_view_result);
+
+    // Now we continue the view processing and generate the rendered output
+    // NOTE: $view->render will call $view->execute again,
+    // but the execute method will detect that it ran already and not redo it.
+    $output = $view->render();
+    // Clean up after processing
+    $view->post_execute();
+  }
+
+  return $output;
+}
+
+// function to get new sorting value
+function get_sort_values($view_results) {
+    $returned_result = array();
+    foreach ($view_results as $result) {
+        // get uprise flag timestamp for user being viewed
+        $uid = arg(1);
+        $flag = flag_get_user_flags ('node', $result->nid, $uid );
+        
+        if ($flag == null) {
+            //Leave sort timestamp as default node creation date because if there's no flag date
+            //it means this is a node user being viewed created
+        } else {
+            
+            // Change timestamp for items flagged by this user so they sort by
+            // when the flagging actually happened
+            $result->node_created = $flag['uprise']->timestamp;
+        }
+        
+        $returned_result[] = $result;
+    }
+    
+    usort($returned_result, function($a, $b) {
+        return $a->node_created - $b->node_created;
+    });
+    
+    return $returned_result;
 }
