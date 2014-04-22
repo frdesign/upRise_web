@@ -8,8 +8,7 @@
     
     //USER PROFILE ---------------------------------
     
-    // Change profile "view" tab to just "profile"
-    $('body.page-user- ul.tabs li:first a').text('Cloud');
+    
     
     // Change "edit account" form items
     $('div#edit-account .password-parent label').text('Create NEW password');

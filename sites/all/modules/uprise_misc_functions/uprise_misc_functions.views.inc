@@ -9,6 +9,10 @@ function uprise_misc_functions_views_query_alter(&$view, &$query) {
     $query->where[0]['type'] = 'OR';
     //dsm($query, 'after');
     
+  } elseif ($view->name == 'frontpage') {
+    //dsm($query, 'before');
+    $query->where[0]['type'] = 'OR';
+    //dsm($query, 'after');
     
   }
 }

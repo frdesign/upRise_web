@@ -85,10 +85,11 @@ function uprise_aura_points_user_aura_level ($uid) {
     dpm($aura_level, 'aura level');
     
     // Fix aura level if user value too high or too low
+    // Start at 1 for low, give no more than +1 level for those above high average
     if ($aura_level <1) {
         $aura_level = 1;
     } elseif($aura_level > ($high_aura_percent * 100) ) {
-        $aura_level = $high_aura_percent * 100;
+        $aura_level = $high_aura_percent * 100 + 1;
     }
     return floor($aura_level);
     
@@ -157,8 +158,12 @@ function uprise_aura_points_contents() {
         <div id="aura-level">Cloud Level: <span id="aura-level-value">' . $user_aura_level . '</div>
     </div>
     <div id="aura-container">
+        <div id = "aura-inner">
+        
+        <canvas id="aura"><p class="noCanvas">Sorry, you need a <a href="http://www.google.com/chrome">modern browser</a> to view this.</p></canvas>
         ' . $profile_image . '
-        <canvas id="aura"><p class="noCanvas">Sorry, you need a <a href="http://www.google.com/chrome">modern browser</a> to view this.</p></canvas></div>
+        </div>
+    </div>
         
   ';
 }

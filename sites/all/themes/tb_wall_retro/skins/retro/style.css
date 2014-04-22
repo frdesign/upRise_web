@@ -1108,6 +1108,11 @@ body.tb-wall-popup-iframe {
 	display: none;
 }
 
+/*Make node preview titles less bold more spaced out*/
+.grid.views-col h2.node-title {
+	letter-spacing: .05em;
+}
+
 /*Make quote's text prettier*/
 .node-quotes div.field-name-body {
 	font-size: 1.5em;
@@ -1146,45 +1151,52 @@ div.video-embed-description {
 
 /*Uprise flag styles
 Images are in TB wall theme inside Skins image folder*/
-li span.flag-uprise a {
+span.flag-uprise a,
+span.flag-follow-users a {
 	font-weight: 500;
-	font-size: 1.3em;
-}
-
-li span.flag-uprise a.flag-action {
-	background-color: #EC1C24;
-	color: #fff !important;
+	font-size: 1.2em !important;
 	border:none;
-	text-align: center;
-	height: 25px;
-	padding: 10px 20px 0;
-	margin: 0 0 20px 0;
-	color: transparent;
+	color: white !important;
+	line-height: 30px;
+	padding: 6px 12px !important;
+	text-decoration: none;
+	margin-bottom: 5px;
 }
 
-li span.flag-uprise a.flag-action:focus,
-li span.flag-uprise a.flag-action:hover{
+div.pane-user-flag-follow-users-link {
+	text-align: center;
+}
+
+span.flag-uprise a.flag-action,
+span.flag-follow-users a.flag-action  {
+	background-color: #EC1C24;	
+}
+
+span.flag-uprise a.flag-action:focus,
+span.flag-uprise a.flag-action:hover,
+span.flag-follow-users a.flag-action:focus,
+span.flag-follow-users a.flag-action:hover {
 	background-color: gray;
 }
 
-li span.flag-uprise a.unflag-action {
+span.flag-uprise a.unflag-action,
+span.flag-follow-users a.unflag-action {
 	background-color: gray;
-	color: #fff !important;
-	border:none;
-	text-align: center;
-	height: 25px;
-	padding: 10px 20px 0;
-	margin: 0 0 20px 0;
-	color: transparent;
 }
 
-li span.flag-uprise a.unflag-action:focus,
-li span.flag-uprise a.unflag-action:hover{
+span.flag-uprise a.unflag-action:focus,
+span.flag-uprise a.unflag-action:hover,
+span.flag-follow-users a.unflag-action:focus,
+span.flag-follow-users a.unflag-action:hover {
 	background-color:  #EC1C24;
 }
 
 span.flag-success-message {
-	margin-top: 12px;
+	margin-top: 14px;
+}
+
+div.pane-user-flag-follow-users-link span.flag-success-message {
+	margin-top: 7px;
 }
 
 /*Fix comment photo floating to the top of the page*/
@@ -1342,18 +1354,21 @@ div.pane-front-page-member-views div.more-link {
 	padding: 0 0 20px 0;
 }
 
+
 #profile-user-name  {
 	color: #00A7AE;
 	margin: 0 15px 10px 20px;
 	font-size: 2em;
 	font-weight: bold;
+	text-align: center;
 }
 
 /*Make upRise level pretty*/
 #aura-level {
 	margin: 0 0 0 20px;
 	font-size: 12px;
-	font-weight: bold; 
+	font-weight: bold;
+	text-align: center;
 }
 
 #aura-level-value {
@@ -1366,33 +1381,48 @@ div.pane-front-page-member-views div.more-link {
 	-webkit-border-radius: 10px;
 }
 
-#public_profile div#aura-container .user-picture img{
-	width: 100px;
-	height: auto;
-	border-radius: 55px; 
-	-moz-border-radius: 55px;
-	-webkit-border-radius: 55px;
-	position: absolute;
-	margin: 85px 0 0 85px;	
-	border: 5px solid white;
+div#aura-container {
+	margin-bottom: 5px;
+	min-height: 300px;
 }
+
+div#aura-inner {
+	position: relative;
+}
+
 
 /*Make aura circular*/
 canvas#aura {
 	border-radius: 140px; 
 	-moz-border-radius: 140px;
 	-webkit-border-radius: 140px;
-	margin-bottom: 5px;
+	position: absolute;
+	margin: 0 auto !important;
+	top: 0; left: 0; bottom: 0; right: 0;
+	
+	
 }
 
-
-/*Follow flag styles
-Images are in TB wall theme inside Skins image folder*/
-.flag-follow-users a {
-	font-weight: bold;
-	font-size: 1.2em;
-	margin: 10px 0 0 30px;
+#public_profile div#aura-container .user-picture {
+	width: 100px !important;
+	height: auto !important;
+	display: inline-block;
+	position: absolute;
+	margin: 0 auto !important;
+	top: 84px; left: -8px; bottom: 0; right: 0;
+	
 }
+
+#public_profile div#aura-container .user-picture img{
+	width: 100px !important;
+	height: auto !important;
+	margin: 0;
+	border-radius: 55px; 
+	-moz-border-radius: 55px;
+	-webkit-border-radius: 55px;
+	border: 5px solid white;
+}
+
 
 /*Fix ugly links field label in edit profile tab*/
 #field-links-values th label {
@@ -1427,9 +1457,25 @@ span.edit-cancel {
 	
 }
 
+
+/*fix overlap of 2 views on page*/
+.view-followers .view-content {
+	clear: both;
+}
+
+/*Visual separation between both views*/
+.view-followers div.view-footer .view-content{
+	border-top: solid 5px #EC1C24;
+}
+
 /*Edit account tab*/
 div.form-item-picture-delete {
 	display: none;
+}
+
+
+.profile-content .grid.views-col .grid-inner .node {
+	width: 100%;
 }
 
 
