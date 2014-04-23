@@ -1321,13 +1321,15 @@ div.sharethis-buttons {
 
 
 
-/*Front page user views*/
+/*Front page profiled cloud views*/
 
 div.view-front-page-member-views ul li.views-row {
 	float: left;
 	background: none;
 	margin: 0;
 	padding: 0;
+	text-align: center;
+	font-size: .8em;
 }
 
 div.view-front-page-member-views ul li.views-row img{
@@ -1446,6 +1448,8 @@ span.edit-cancel {
 .view-followers-tab .view-content ul,
 .view-members-tabs .view-content ul {
 	list-style-type: none;
+	text-align: center;
+	font-size: .8em;
 }
 
 .view-followers .view-content ul li,
@@ -1453,7 +1457,7 @@ span.edit-cancel {
 .view-members-tabs .view-content ul li {
 	float: left;
 	background: none;
-	margin: 0 10px 10px 0;
+	margin: 0 5px 10px 5px;
 	
 }
 
@@ -1498,6 +1502,16 @@ div#overlay-content div#main-wrapper {
 #user-login .form-item input.form-text {
 	width: 334px;
 }
+
+
+/*EXPLORE TABS*********************************************************/
+
+/*fix overlap of 2 views on page & give visual separation*/
+.view-explore-posts-subviews .view-header {
+	clear: both;
+	border-top: solid 5px #EC1C24;
+}
+
 
 /*GLOBAL*********************************************************/
 
