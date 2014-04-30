@@ -1,0 +1,9 @@
+.qtip-link {
+  border-bottom: 3px double #00F;
+  color: #00F;
+  cursor: pointer;
+}
+
+.qtip-tooltip {
+  display: none;
+}

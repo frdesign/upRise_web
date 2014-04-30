@@ -599,16 +599,16 @@ a:focus {
 
 .node-links ul.links li.node-readmore a,
 span.button input.form-submit {
-    background: #F0F0F0;
-    border: 1px solid #ccc;
+	background: #F0F0F0;
+	border: 1px solid #ccc;
 	box-shadow: none;
-    color: #666;
+	color: #666;
 	filter: none;
-    font-weight: normal;
-    text-shadow: 1px 1px 0 #fff;
+	font-weight: normal;
+	text-shadow: 1px 1px 0 #fff;
 	border-radius: 3px;   
-    display: block;
-    padding: 2px 5px;
+	display: block;
+	padding: 2px 5px;
 }
 
 span.button input.form-submit {
@@ -1047,6 +1047,12 @@ ul.sf-main-menu li a {
 	letter-spacing: 1px;
 }
 
+.block .sf-menu.sf-style-wall a.active {
+	background: none;
+	color: #93d2b8;
+	text-decoration: none;
+}
+
 /*Change color of active main menu link*/
 .block .sf-menu.sf-style-wall .active-trail .sf-depth-1 {
 	color: #93d2b8;
@@ -1142,6 +1148,9 @@ div.user-picture {
 div.user-picture img {
 	width: 50px;
 	height: 50px;
+	border-radius: 25px; 
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
 }
 
 /*Position Video embed description lower*/
@@ -1151,27 +1160,34 @@ div.video-embed-description {
 
 /*Uprise flag styles
 Images are in TB wall theme inside Skins image folder*/
+.node-full span.flag-post-hi-five a,
 span.flag-uprise a,
 span.flag-follow-users a {
 	font-weight: 500;
 	font-size: 1.2em !important;
 	border:none;
 	color: white !important;
-	line-height: 30px;
+	line-height: 25px;
 	padding: 6px 12px !important;
 	text-decoration: none;
 	margin-bottom: 5px;
+	border-radius: 5px; 
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 }
 
 div.pane-user-flag-follow-users-link {
 	text-align: center;
 }
 
+.node-full span.flag-post-hi-five a.flag-action,
 span.flag-uprise a.flag-action,
 span.flag-follow-users a.flag-action  {
 	background-color: #EC1C24;	
 }
 
+.node-full span.flag-post-hi-five a.flag-action:focus,
+.node-full span.flag-post-hi-five a.flag-action:hover,
 span.flag-uprise a.flag-action:focus,
 span.flag-uprise a.flag-action:hover,
 span.flag-follow-users a.flag-action:focus,
@@ -1179,11 +1195,14 @@ span.flag-follow-users a.flag-action:hover {
 	background-color: gray;
 }
 
+.node-full span.flag-post-hi-five a.unflag-action,
 span.flag-uprise a.unflag-action,
 span.flag-follow-users a.unflag-action {
 	background-color: gray;
 }
 
+.node-full span.flag-post-hi-five a.unflag-action:focus,
+.node-full span.flag-post-hi-five a.unflag-action:hover,
 span.flag-uprise a.unflag-action:focus,
 span.flag-uprise a.unflag-action:hover,
 span.flag-follow-users a.unflag-action:focus,
@@ -1254,11 +1273,6 @@ div.fluid_container {
 	float: left;
 }
 
-/*Spread out share this links*/
-div.sharethis-buttons {
-	float: right;
-	margin-right: 20px;
-}
 
 /*Get rid of ripped paper effect on botton of teasers*/
 .grid.views-col .grid-inner .node:before {
@@ -1334,7 +1348,7 @@ div.view-front-page-member-views ul li.views-row {
 
 div.view-front-page-member-views ul li.views-row img{
 	padding: 0;
-	margin: 0;
+	margin: 2px 0;
 }
 
 div.pane-front-page-member-views h2.pane-title {
@@ -1426,6 +1440,15 @@ canvas#aura {
 }
 
 
+/*Fix view panel divider which is inconsistent*/
+#public-profile .panel-separator,
+.panel-flexible .panel-separator {
+	border: solid .1em #f0eff1;
+	background-image: none;
+	margin: 1.5em 0;
+	height: 0px !important;
+}
+
 /*Fix ugly links field label in edit profile tab*/
 #field-links-values th label {
 	padding-left: 20px;
@@ -1448,8 +1471,6 @@ span.edit-cancel {
 .view-followers-tab .view-content ul,
 .view-members-tabs .view-content ul {
 	list-style-type: none;
-	text-align: center;
-	font-size: .8em;
 }
 
 .view-followers .view-content ul li,
@@ -1457,7 +1478,7 @@ span.edit-cancel {
 .view-members-tabs .view-content ul li {
 	float: left;
 	background: none;
-	margin: 0 5px 10px 5px;
+	margin: 0 0 5px 0;
 	
 }
 
@@ -1483,6 +1504,8 @@ div.form-item-picture-delete {
 }
 
 
+/*********MISCELANEOUS***********************************************/
+
 /*OVERLAY USER CONTENT TYPE CREATION FOMRS***********************************************/
 
 /*Get rid of header showing in overlay and move content back up into window*/
@@ -1494,6 +1517,12 @@ div#overlay-content div#header-wrapper {
 div#overlay-content div#main-wrapper {
 	top: 0px;
 }
+
+/*change close button color*/
+#overlay-close, #overlay-close:hover {
+	background: transparent url("/sites/default/files/misc/ctools_close.png") no-repeat;
+}
+
 
 
 /*FORMS*********************************************************/
@@ -1507,11 +1536,64 @@ div#overlay-content div#main-wrapper {
 /*EXPLORE TABS*********************************************************/
 
 /*fix overlap of 2 views on page & give visual separation*/
-.view-explore-posts-subviews .view-header {
+.view-members-tabs .view-footer {
 	clear: both;
-	border-top: solid 5px #EC1C24;
+	border-top: solid 1px #EC1C24;
 }
 
+/*INTRO PAGE*********************************************************/
+
+/*Hide node header*/
+#article-1546 .header {
+	display: none;
+}
+
+#intro {
+	padding: 0 20px;
+}
+
+
+#intro p.intro-body {
+	font-size: 1em;
+	color: #EC1C24;
+	font-weight: bold;
+}
+
+.intro-cont {
+	clear: both;
+	margin: 20px 0;
+}
+
+.intro-graphic {
+	float: left;
+	margin-right: 30px;
+}
+
+.intro-text1,
+.intro-text3{
+	padding-top: 50px;
+}
+
+
+#intro p,
+#intro ul {
+	font-size: .8em;
+}
+
+/*Link to intro page on header*/
+.region-header #block-block-21 {
+	margin: 15px 0 0 -55px;
+}
+
+.region-header #block-block-21 a {
+	color: white;
+	text-decoration: none;
+}
+
+.region-header #block-block-21 a:hover,
+.region-header #block-block-21 a:focus {
+	color: #93d2b8;
+}
 
 /*GLOBAL*********************************************************/
 

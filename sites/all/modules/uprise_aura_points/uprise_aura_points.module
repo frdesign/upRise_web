@@ -155,7 +155,7 @@ function uprise_aura_points_contents() {
   '
     <div id="profile-title">
         <div id="profile-user-name">' . $user_name . '</div>
-        <div id="aura-level">Cloud Level: <span id="aura-level-value">' . $user_aura_level . '</div>
+        <div id="aura-level">Cloud Power Level: <span id="aura-level-value">' . $user_aura_level . '</div>
     </div>
     <div id="aura-container">
         <div id = "aura-inner">

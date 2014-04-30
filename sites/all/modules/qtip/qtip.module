@@ -1,0 +1,457 @@
+<?php
+
+// Constants
+define('QTIP_CDN_VERSION', '2.2.0');
+
+/**
+ * Implements hook_help().
+ */
+function qtip_help($path, $arg) {
+  if ($path == 'admin/config/user-interface/qtip' && module_exists('block')) {
+    return '<p>' . t('Each qTip instance can be used throughout the site to style a set of tooltips.') . '</p>';
+  }
+}
+
+/**
+ * Implements hook_init().
+ */
+function qtip_init() {
+  $settings = _qtip_fetch_cdn_settings();
+
+  // If the admin choose to use a CDN
+  if ($settings['qtip_cdn'] != 'none') {
+    switch ($settings['qtip_cdn']) {
+      case 'cdnjs':
+        drupal_add_js('//cdnjs.cloudflare.com/ajax/libs/qtip2/' . $settings['qtip_cdn_version'] . ($settings['qtip_cdn_features'] == 'basic' ? '/basic' : '') . '/jquery.qtip' . ($settings['qtip_cdn_compression'] == 'min' ? '.min' : '') . '.js', 'external');
+        drupal_add_css('//cdnjs.cloudflare.com/ajax/libs/qtip2/' . $settings['qtip_cdn_version'] . ($settings['qtip_cdn_features'] == 'basic' ? '/basic' : '') . '/jquery.qtip' . ($settings['qtip_cdn_compression'] == 'min' ? '.min' : '') . '.css', 'external');
+        break;
+
+      case 'jsdelivr':
+      default:
+        drupal_add_js('//cdn.jsdelivr.net/qtip2/' . $settings['qtip_cdn_version'] . ($settings['qtip_cdn_features'] == 'basic' ? '/basic' : '') . '/jquery.qtip' . ($settings['qtip_cdn_compression'] == 'min' ? '.min' : '') . '.js', 'external');
+        drupal_add_css('//cdn.jsdelivr.net/qtip2/' . $settings['qtip_cdn_version'] . ($settings['qtip_cdn_features'] == 'basic' ? '/basic' : '') . '/jquery.qtip' . ($settings['qtip_cdn_compression'] == 'min' ? '.min' : '') . '.css', 'external');
+        break;
+    }
+  }
+  else {
+    if (module_exists('libraries')) {
+      // Try to load the library and check if that worked.
+      $library = libraries_load('qtip');
+      // The library did not load properly
+      if (empty($library['loaded'])) {
+        drupal_set_message(t('The qTip library is not loaded. qTips will not display on the site.'), 'error', FALSE);
+      }
+    }
+    else {
+      drupal_set_message(t('You must have the !libraries module installed and enabled to use a custom build of qTip.', array('!libraries' => '<a href="http://drupal.org/projects/libraries">Libraries</a>')), 'error', FALSE);
+    }
+  }
+
+  // Only load qtip.admin.js file if currently viewing qTip settings page
+  if (request_uri() == base_path() . 'admin/config/user-interface/qtip/settings/filter') {
+    drupal_add_js(drupal_get_path('module', 'qtip') . '/js/qtip.admin.js');
+  }
+
+// ------ @TODO: THIS NEEDS TO BE HANDLED BETTER SO THAT IT IS NOT PROCESSED ON EVERY PAGE!
+  drupal_add_js(drupal_get_path('module', 'qtip') . '/js/qtip.js', 'file');
+  drupal_add_css(drupal_get_path('module', 'qtip') . '/css/qtip.css');
+
+  $instances = qtip_load_multiple();
+
+  $settings = array();
+  foreach ($instances as $machine_name => $instance) {
+    // Pull the instance settings out of the settings array so that it is ready for jQuery
+    $settings[$machine_name] = $instance->settings;
+
+    //--- Items to handle individually before being processed in bulk
+    // NONE SO FAR!
+
+    foreach($instance as $inst) {
+      if (is_array($inst)) {
+        foreach ($inst as $key => $setting) {
+          // Remove all empty values from the setting section so that qTip will use it's default setting
+          $settings[$machine_name][$key] = array_filter($settings[$machine_name][$key]);
+
+          $events = '';
+          // Convert 'event' arrays into strings since that is what qTip is expecting
+          if (isset($setting['event'])) {
+            foreach ($setting['event'] as $event_key => $value) {
+              if ($value) {
+                $events .= $event_key . ' ';
+              }
+            }
+            $settings[$machine_name][$key]['event'] = $events;
+          }
+        }
+      }
+    }
+
+    // If the tooltip position is not set (because it was removed before), set it to the most logical place
+
+    if (!isset($settings[$machine_name]['position']['my'])) {
+      $qtip_position_map = array(
+        'top left'      => 'bottom right',
+        'top center'    => 'bottom center',
+        'top right'     => 'bottom left',
+        'right center'  => 'left center',
+        'bottom right'  => 'top left',
+        'bottom center' => 'top center',
+        'bottom left'   => 'top right',
+        'left center'   => 'right center',
+      );
+      $settings[$machine_name]['position']['my'] = $qtip_position_map[$settings[$machine_name]['position']['at']];
+    }
+
+    //--- Items to handle individually before being processed in bulk
+    // Remove all empty values from position.adjust so that qTip will use it's default setting
+    $settings[$machine_name]['position']['adjust'] = array_filter($settings[$machine_name]['position']['adjust']);
+
+    // Set the value of the tip to FALSE if it was removed in the bulk operations above
+    // qTip needs style.tip = false if it is supposed to hide the tip because by default
+    // it will display the tip. We don't want to set a checkbox for 'Hide tip' in the
+    // administrative form because all of the other options are 'show'
+    if (!isset($settings[$machine_name]['style']['tip'])) {
+      $settings[$machine_name]['style']['tip'] = FALSE;
+    }
+
+    // We need to push the shadow and rounded corners classes to the classes array, if they exist
+    isset($settings[$machine_name]['style']['shadow']) && $settings[$machine_name]['style']['shadow'] != FALSE
+      ? $settings[$machine_name]['style']['classes'] .= ' qtip-shadow' : '';
+    isset($settings[$machine_name]['style']['rounded_corners']) && $settings[$machine_name]['style']['rounded_corners'] != FALSE
+      ? $settings[$machine_name]['style']['classes'] .= ' qtip-rounded' : '';
+  }
+
+  // Send the settings to qtip.js
+  drupal_add_js(array('qtip' => drupal_json_encode($settings)), 'setting');
+  // ----- END TODO
+}
+
+/**
+ * Implements hook_permission().
+ */
+function qtip_permission() {
+  return array(
+    'administer qtip' => array(
+      'title'       => t('Administer qTip'),
+      'description' => t('Administer qTip settings.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function qtip_menu() {
+  $items = array();
+
+  $items['admin/config/user-interface/qtip'] = array(
+    'title'            => 'qTip',
+    'type'             => MENU_NORMAL_ITEM,
+    'page callback'    => 'qtip_list',
+    'access callback'  => 'user_access',
+    'access arguments' => array('administer qtip'),
+    'file'             => 'includes/forms/qtip.list.inc',
+  );
+  $items['admin/config/user-interface/qtip/list'] = array(
+    'title'  => t('List'),
+    'type'   => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => 0,
+  );
+  $items['admin/config/user-interface/qtip/list/add'] = array(
+    'title'            => 'Add qTip instance',
+    'type'             => MENU_LOCAL_ACTION,
+    'page callback'    => 'drupal_get_form',
+    'page arguments'   => array('qtip_form', 'add'),
+    'access arguments' => array('administer qtip'),
+    'file'             => 'includes/forms/qtip.admin.inc',
+  );
+
+  $items['admin/config/user-interface/qtip/manage/%qtip'] = array(
+    'title'            => 'Edit qTip set',
+    'page callback'    => 'drupal_get_form',
+    'page arguments'   => array('qtip_form', 'edit', 5),
+    'access arguments' => array('administer qtip'),
+    'file'             => 'includes/forms/qtip.admin.inc',
+  );
+  $items['admin/config/user-interface/qtip/manage/%qtip/edit'] = array(
+    'title'   => 'Edit qTip set',
+    'type'    => MENU_DEFAULT_LOCAL_TASK,
+    'context' => MENU_CONTEXT_INLINE,
+  );
+  $items['admin/config/user-interface/qtip/manage/%qtip/delete'] = array(
+    'title'            => 'Delete qTip set',
+    'type'             => MENU_LOCAL_TASK,
+    'page callback'    => 'drupal_get_form',
+    'page arguments'   => array('qtip_delete_instance', 5),
+    'access arguments' => array('administer qtip'),
+    'file'             => 'includes/forms/qtip.admin.inc',
+  );
+  $items['admin/config/user-interface/qtip/manage/%qtip/clone'] = array(
+    'title'            => 'Clone qTip set',
+    'type'             => MENU_LOCAL_TASK,
+    'page callback'    => 'qtip_clone',
+    'page arguments'   => array(5),
+    'access arguments' => array('administer qtip'),
+    'file'             => 'includes/forms/qtip.admin.inc',
+  );
+  $items['admin/config/user-interface/qtip/manage/%qtip/export'] = array(
+    'title'            => 'Export',
+    'type'             => MENU_LOCAL_TASK,
+    'page callback'    => 'drupal_get_form',
+    'page arguments'   => array('qtip_export_form', 5),
+    'access arguments' => array('administer qtip'),
+    'file'             => 'includes/forms/qtip.admin.inc',
+  );
+
+  $items['admin/config/user-interface/qtip/settings'] = array(
+    'title'            => 'Settings',
+    'type'             => MENU_LOCAL_TASK,
+    'page callback'    => 'drupal_get_form',
+    'page arguments'   => array('qtip_settings_form'),
+    'access arguments' => array('administer qtip'),
+    'file'             => 'includes/forms/qtip.settings.inc',
+  );
+  $items['admin/config/user-interface/qtip/settings/core'] = array(
+    'title'  => 'Core',
+    'type'   => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => 0,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function qtip_theme() {
+  return array(
+    'qtip' => array(
+      'variables' => array(
+        'content'  => NULL,
+        'title'    => NULL,
+        'tooltip'  => NULL,
+        'instance' => NULL,
+      ),
+      'file' => 'includes/qtip.theme.inc',
+    ),
+  );
+}
+
+/**
+ * Implements hook_libraries_info().
+ */
+function qtip_libraries_info() {
+  $libraries['qtip'] = array(
+    'name'              => 'qTip',
+    'vendor url'        => 'http://www.qtip2.com',
+    'download url'      => 'http://www.qtip2.com/download',
+    'version arguments' => array(
+      'file'    => 'jquery.qtip.min.js',
+      'pattern' => '/\/\* qTip2 v([0-9\.]{5})/',
+      'lines'   => 1,
+    ),
+    'files' => array(
+      'js' => array(
+        'jquery.qtip.min.js',
+      ),
+      'css' => array(
+        'jquery.qtip.min.css',
+      ),
+    ),
+    'variants' => array(
+      'minified' => array(
+        'files' => array(
+          'js' => array(
+            'jquery.qtip.min.js',
+          ),
+          'css' => array(
+            'jquery.qtip.min.css',
+          ),
+        ),
+      ),
+      'source' => array(
+        'files' => array(
+          'js' => array(
+            'jquery.qtip.js',
+          ),
+          'css' => array(
+            'jquery.qtip.css',
+          ),
+        ),
+      ),
+    ),
+  );
+
+  return $libraries;
+}
+
+/**
+ * Load the qtip data for a particular instance.
+ */
+function qtip_load($name) {
+  $qt = qtip_load_multiple(array($name));
+  return isset($qt[$name]) ? $qt[$name] : NULL;
+}
+
+/**
+ * Load the qtip data.
+ */
+function qtip_load_multiple($names = array()) {
+  ctools_include('export');
+  $defaults = empty($names) ? ctools_export_load_object('qtip', 'all') : ctools_export_load_object('qtip', 'names', $names);
+  return $defaults;
+}
+
+/**
+ * Creates a new quicktab instance.
+ */
+function qtip_save($qtip) {
+  module_invoke_all('qtip_presave', $qtip);
+
+  $exists = qtip_load($qtip->machine_name);
+  if ($exists && empty($exists->in_code_only)) {
+    $ret = drupal_write_record('qtip', $qtip, 'machine_name');
+    if ($ret == SAVED_UPDATED) {
+      qtip_i18n_update_strings(array($qtip->machine_name));
+    }
+    else {
+      return FALSE;
+    }
+  }
+  else {
+    $ret = drupal_write_record('qtip', $qtip);
+    if ($ret == SAVED_NEW) {
+      qtip_i18n_update_strings(array($qtip->machine_name));
+      module_invoke_all('qtip_insert', $qtip);
+    }
+    else {
+      return FALSE;
+    }
+  }
+  module_invoke_all('qtip_save', $qtip);
+  return $qtip;
+}
+
+/**
+ * Updates an existing quicktab instance.
+ */
+function qtip_update($qtip) {
+  qtip_save($qtip);
+  module_invoke_all('qtip_update', $qtip);
+  return $qtip;
+}
+
+/**
+ * Deletes a quicktab instance.
+ */
+function qtip_delete($machine_name) {
+  db_query('DELETE FROM {qtip} WHERE machine_name = :machine_name', array(':machine_name' => $machine_name));
+  module_invoke_all('qtip_delete', $machine_name);
+}
+
+/**
+ * Exports the specified qtip instance with translatable strings.
+ */
+function qtip_export($qt, $indent = '') {
+  $output = ctools_export_object('qtip', $qt, $indent);
+  $translatables = array();
+  if (!empty($qt->name)) {
+    $translatables[] = $qt->name;
+  }
+  $translatables = array_filter(array_unique($translatables));
+  if (!empty($translatables)) {
+    $output .= "\n";
+    $output .= "{$indent}// Translatables\n";
+    $output .= "{$indent}// Included for use with string extractors like potx.\n";
+    sort($translatables);
+    foreach ($translatables as $string) {
+      $output .= "{$indent}t(" . ctools_var_export($string) . ");\n";
+    }
+    $output .= "\n";
+  }
+  return $output;
+}
+
+/**
+ * Determine if the machine name is in use.
+ */
+function qtip_machine_name_exists($machine_name) {
+  $qt_exists = db_query_range('SELECT 1 FROM {qtip} WHERE machine_name = :name', 0, 1, array(':name' => $machine_name))->fetchField();
+  return $qt_exists;
+}
+
+/**
+ * Retrieve an associated array of all of the qTip instances available on the site.
+ */
+function qtip_fetch_instances($required = FALSE) {
+  $qts = qtip_load_multiple();
+
+  $instances[''] = $required ? t('- Select a value -') : t('- None -');
+
+  foreach ($qts as $machine_name => $instance) {
+    $instances[$machine_name] = $instance->name;
+  }
+
+  return $instances;
+}
+
+/**
+* Implements hook_i18n_string_info()
+*/
+function qtip_i18n_string_info() {
+  $groups['qtip'] = array(
+    'title'       => t('qtip'),
+    'description' => t('Vocabulary titles and term names for localizable qtip.'),
+    'format'      => FALSE, // This group doesn't have strings with format
+    'list'        => TRUE, // This group can list all strings
+  );
+  return $groups;
+}
+
+function qtip_translate($name, $string, $langcode = NULL, $textgroup = 'qtip') {
+  return function_exists('i18n_string') ? i18n_string($textgroup . ':' . $name, $string, array('langcode' => $langcode)) : $string;
+}
+
+/**
+ * Update translatable strings.
+ */
+function qtip_i18n_update_strings($names = array()) {
+  if (!function_exists('i18n_string_update')) return;
+  $qt = qtip_load_multiple($names);
+  foreach ($qt as $name => $qtip) {
+    i18n_string_update("qtip:title:$name", $qtip->title);
+    foreach ($qtip->tabs as $tabkey => $tab) {
+      i18n_string_update("qtip:tab:$name-$tabkey:title", $tab['title']);
+    }
+  }
+}
+
+/**
+ * Implements hook_i18n_string_refresh().
+ *
+ * Refresh translations for all user-generated strings managed by qtip.
+ * This will load all strings inputted via the qtip user interface and
+ * register them (and their translations, if there are any) with the
+ * i18n_strings system.
+ */
+function qtip_i18n_string_refresh($group) {
+  if ($group === 'qtip') {
+    qtip_i18n_update_strings();
+  }
+  return TRUE;
+}
+
+
+/**
+ * Helper function to fetch default settings for CDN library.
+ */
+function _qtip_fetch_cdn_settings($setting = NULL) {
+  if (!$setting) { // Fetch all settings
+    return array(
+      'qtip_cdn'             => variable_get('qtip_cdn', 'jsdelivr'),
+      'qtip_cdn_version'     => variable_get('qtip_cdn_version', QTIP_CDN_VERSION),
+      'qtip_cdn_features'    => variable_get('qtip_cdn_features', 'all'),
+      'qtip_cdn_compression' => variable_get('qtip_cdn_compression', 'min'),
+    );
+  }
+}

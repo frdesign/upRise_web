@@ -1,0 +1,18 @@
+name = "qTip: Views"
+description = "Integrates the qTip library with Views module."
+package = User interface
+core = 7.x
+
+dependencies[] = qtip
+dependencies[] = views
+
+files[] = qtip_views.module
+; Views handlers
+files[] = handlers/qtip_views_handler_field_tooltip.inc
+
+; Information added by Drupal.org packaging script on 2014-03-14
+version = "7.x-2.0-beta1"
+core = "7.x"
+project = "qtip"
+datestamp = "1394814206"
+
